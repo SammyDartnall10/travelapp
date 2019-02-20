@@ -1,26 +1,13 @@
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+<h1>Travelspiration App</h1>
 
+<h2>Project need/definiton:</h2>
 
-Hi there! Welcome to Cloud9 IDE!
+Users of this app are people looking for overall travel inspiration. 
 
-To get you started, we included a small hello world application.
+They are looking for ideas on where they can travel to, what they can do when they get there, where they can stay and where to eat.
 
-1) Open the hello-world.html file
+<h2>Proposed soloution:</h2>
 
-2) Click on the Preview button to open a live preview pane
+Based on some kind of user input, the app will suggest a few cities to visit. 
 
-3) Make some changes to the file, save, watch the preview, and have fun!
-
-Happy coding!
-The Cloud9 IDE team
-
-
-## Support & Documentation
-
-Visit http://docs.c9.io for documentation, or http://support.c9.io for support.
-To watch some training videos, visit http://www.youtube.com/user/c9ide
+After selecting a city, the app will show options for eating, drinking, accomodation, and things to do. 
