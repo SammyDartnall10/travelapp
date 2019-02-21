@@ -1,6 +1,9 @@
+/*------------------------------------commemting  out ------------------------------------------------------------
+var destinationSelection = "";
+
 /*when a button is clicked, set the variable as the button value*/
 
-function setTypes(cb) {
+/*function setTypes(cb) {
     $(".adventure").on("click", function() {
         var adventureLevel = $(this).attr("id");
         cb(adventureLevel);
@@ -18,34 +21,31 @@ function setTypes(cb) {
 }
 
 /*set destinationSelection as a combo of the button selections*/
-function setGeoString(data) {
+/*function setGeoString(data) {
     $(".inspire").on("click", function() {
         var destinationSelection = data;
         console.log(destinationSelection);
         if (destinationSelection === "active") {
-            console.log("yay")
+            console.log("yay");
         }
         else {
-            console.log("nope :(")
+            console.log("nope :(");
         }
     });
 }
 
 /*call the function to set the types and pass to destinationSelection when inspire button clicked*/
-setTypes(setGeoString);
+/*setTypes(setGeoString);
 
+console.log(destinationSelection);
 
-
-
+/*------------------------------------end of commemting  out ------------------------------------------------------------*/
 
 
 /*below: other bits for cb function for selections*/
 
 
 
-
-
-/*need to make a callback function so that you can get the results of the button clicks from the function*/
 
 
 /*based on what the variables are set as, set the location as one of the following:
@@ -55,7 +55,7 @@ active  hot low                 Cuba
 active  mild high               Queenstown
 active  mild medium             Costa Rica
 active  mild low                Lake Titicaca
-active  cold high               Whistler
+active  cold high               Courchevel
 active  cold medium             Wanaka
 active  cold low                Vogel
 
@@ -78,18 +78,161 @@ relaxed  mild low               Split
 relaxed  cold high              Iceland
 relaxed  cold medium            Norway 
 relaxed  cold low               Talin
-
-
-eg if "quizOutput = recreational hot low, location = Thailand"
-
-then pass the location to maps to centre on that point. 
-
-Then do a nearby search to show restaurants etc - switch using buttons
 */
 
 
-/*
-function initMap() {
+
+var destinationString;
+
+var destinationSelection = {
+    activity: "activity",
+    temperature: "temperature",
+    price: "price",
+};
+
+var geoLocation;
+
+$(".adventure").on("click", function() {
+    var adventureLevel = $(this).attr("id");
+    destinationSelection.activity = adventureLevel;
+});
+
+$(".temperature").on("click", function() {
+    var temperatureLevel = $(this).attr("id");
+    destinationSelection.temperature = temperatureLevel;
+});
+
+$(".price").on("click", function() {
+    var price = $(this).attr("id");
+    destinationSelection.price = price;
+});
+
+$(".inspire").on("click", function() {
+    destinationString = destinationSelection.activity + destinationSelection.temperature + destinationSelection.price;
+    console.log(destinationString);
+
+    var geoLocation = destinationString;
+
+    switch (geoLocation) {
+        case 'activehothigh':
+            geoLocation = "Sydney";
+            break;
+
+        case "activehotmedium":
+            geoLocation = "Botswana";
+            break;
+
+        case "activehotlow":
+            geoLocation = "Cuba";
+            break;
+
+        case "activemildhigh":
+            geoLocation = "Queenstown";
+            break;
+
+        case 'activemildmedium':
+            geoLocation = "Costa Rica";
+            break;
+
+        case "activemildlow":
+            geoLocation = "Lake Titicaca";
+            break;
+
+        case "activecoldhigh ":
+            geoLocation = "Courchevel";
+            break;
+
+        case "activecoldmedium":
+            geoLocation = "Wanaka";
+            break;
+
+        case "activecoldlow ":
+            geoLocation = "Vogel";
+            break;
+
+        case 'recreationalhothigh':
+            geoLocation = "Monaco";
+            break;
+
+        case "recreationalhotmedium":
+            geoLocation = "Greece";
+            break;
+
+        case "recreationalhotlow":
+            geoLocation = "Thailand";
+            break;
+
+        case "recreationalmildhigh":
+            geoLocation = "Venice";
+            break;
+
+        case 'recreationalmildmedium':
+            geoLocation = "Cape Town";
+            break;
+
+        case "recreationalmildlow":
+            geoLocation = "Puerto Rico";
+            break;
+
+        case "recreationalcoldhigh ":
+            geoLocation = "Verbier";
+            break;
+
+        case "recreationalcoldmedium":
+            geoLocation = "Colonge";
+            break;
+
+        case "recreationalcoldlow ":
+            geoLocation = "Budapest";
+            break;
+
+        case 'relaxedhothigh':
+            geoLocation = "Barbados";
+            break;
+
+        case "relaxedhotmedium":
+            geoLocation = "Hawaii";
+            break;
+
+        case "relaxedhotlow":
+            geoLocation = "French Polynesia";
+            break;
+
+        case "relaxedmildhigh":
+            geoLocation = "Fiji";
+            break;
+
+        case 'relaxedmildmedium':
+            geoLocation = "Valencia";
+            break;
+
+        case "relaxedmildlow":
+            geoLocation = "Split";
+            break;
+
+        case "relaxedcoldhigh ":
+            geoLocation = "Iceland";
+            break;
+
+        case "relaxedcoldmedium":
+            geoLocation = "Norway";
+            break;
+
+        case "relaxedcoldlow ":
+            geoLocation = "Talin";
+            break;
+
+        default:
+            console.log("This is the default value when none of the cases were true");
+    }
+});
+
+console.log(geoLocation);
+
+/*then pass the location to maps to centre on that point. */
+
+
+/*function initMap() {
     // The location of Uluru
     var uluru = { lat: -25.344, lng: 131.036 };
     // The map, centered at Uluru
@@ -113,5 +256,8 @@ function initMap() {
     });
 
     var markerCluster = new MarkerClusterer(map, markers, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
-};
-*/
+}*/
+
+
+
+
