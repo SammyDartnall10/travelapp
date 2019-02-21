@@ -1,31 +1,46 @@
-function setTypes(cb){
-    
-$(document).ready(function() {
+/*when a button is clicked, set the variable as the button value*/
+
+function setTypes(cb) {
     $(".adventure").on("click", function() {
         var adventureLevel = $(this).attr("id");
-        cb (adventureLevel);/*when a button is clicked, set the variable as the button value*/
+        cb(adventureLevel);
     });
 
     $(".temperature").on("click", function() {
         var temperatureLevel = $(this).attr("id");
-        cb (temperatureLevel);
+        cb(temperatureLevel);
     });
 
     $(".price").on("click", function() {
         var price = $(this).attr("id");
-        cb (price);
+        cb(price);
     });
-
-});
-
 }
 
-
-function printDataToConsole(data){
-    console.log(data);
+/*set destinationSelection as a combo of the button selections*/
+function setGeoString(data) {
+    $(".inspire").on("click", function() {
+        var destinationSelection = data;
+        console.log(destinationSelection);
+        if (destinationSelection === "active") {
+            console.log("yay")
+        }
+        else {
+            console.log("nope :(")
+        }
+    });
 }
 
-setTypes(printDataToConsole);
+/*call the function to set the types and pass to destinationSelection when inspire button clicked*/
+setTypes(setGeoString);
+
+
+
+
+
+
+/*below: other bits for cb function for selections*/
+
 
 
 
