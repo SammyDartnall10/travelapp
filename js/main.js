@@ -1,43 +1,222 @@
-/*------------------------------------commemting  out ------------------------------------------------------------
-var destinationSelection = "";
+
+
+
+/*setting object templates to be used by button selection*/
+
+var destinationSelection = {
+    activity: "activity",
+    temperature: "temperature",
+    price: "price",
+};
+
+/*setting object templates for end destination city*/
+
+var selection = {
+    destinationCity: "destinationCity",
+};
 
 /*when a button is clicked, set the variable as the button value*/
 
-/*function setTypes(cb) {
-    $(".adventure").on("click", function() {
-        var adventureLevel = $(this).attr("id");
-        cb(adventureLevel);
-    });
+$(".adventure").on("click", function() {
+    var adventureLevel = $(this).attr("id");
+    destinationSelection.activity = adventureLevel;
+});
 
-    $(".temperature").on("click", function() {
-        var temperatureLevel = $(this).attr("id");
-        cb(temperatureLevel);
-    });
+$(".temperature").on("click", function() {
+    var temperatureLevel = $(this).attr("id");
+    destinationSelection.temperature = temperatureLevel;
+});
 
-    $(".price").on("click", function() {
-        var price = $(this).attr("id");
-        cb(price);
-    });
-}
+$(".price").on("click", function() {
+    var price = $(this).attr("id");
+    destinationSelection.price = price;
+});
+
 
 /*set destinationSelection as a combo of the button selections*/
-/*function setGeoString(data) {
-    $(".inspire").on("click", function() {
-        var destinationSelection = data;
-        console.log(destinationSelection);
-        if (destinationSelection === "active") {
-            console.log("yay");
+
+$(".inspire").on("click", function() {
+    var destinationString = destinationSelection.activity + destinationSelection.temperature + destinationSelection.price;
+
+    var city = destinationString;
+
+    switch (destinationString) {
+        case 'activehothigh':
+            city = "Sydney";
+            break;
+
+        case "activehotmedium":
+            city = "Botswana";
+            break;
+
+        case "activehotlow":
+            city = "Cuba";
+            break;
+
+        case "activemildhigh":
+            city = "Queenstown";
+            break;
+
+        case 'activemildmedium':
+            city = "Costa Rica";
+            break;
+
+        case "activemildlow":
+            city = "Lake Titicaca";
+            break;
+
+        case "activecoldhigh ":
+            city = "Courchevel";
+            break;
+
+        case "activecoldmedium":
+            city = "Wanaka";
+            break;
+
+        case "activecoldlow ":
+            city = "Vogel";
+            break;
+
+        case 'recreationalhothigh':
+            city = "Monaco";
+            break;
+
+        case "recreationalhotmedium":
+            city = "Greece";
+            break;
+
+        case "recreationalhotlow":
+            city = "Thailand";
+            break;
+
+        case "recreationalmildhigh":
+            city = "Venice";
+            break;
+
+        case 'recreationalmildmedium':
+            city = "Cape Town";
+            break;
+
+        case "recreationalmildlow":
+            city = "Puerto Rico";
+            break;
+
+        case "recreationalcoldhigh ":
+            city = "Verbier";
+            break;
+
+        case "recreationalcoldmedium":
+            city = "Colonge";
+            break;
+
+        case "recreationalcoldlow ":
+            city = "Budapest";
+            break;
+
+        case 'relaxedhothigh':
+            city = "Barbados";
+            break;
+
+        case "relaxedhotmedium":
+            city = "Hawaii";
+            break;
+
+        case "relaxedhotlow":
+            city = "French Polynesia";
+            break;
+
+        case "relaxedmildhigh":
+            city = "Fiji";
+            break;
+
+        case 'relaxedmildmedium':
+            city = "Valencia";
+            break;
+
+        case "relaxedmildlow":
+            city = "Split";
+            break;
+
+        case "relaxedcoldhigh ":
+            city = "Iceland";
+            break;
+
+        case "relaxedcoldmedium":
+            city = "Norway";
+            break;
+
+        case "relaxedcoldlow ":
+            city = "Talin";
+            break;
+
+        default:
+            console.log("This is the default value when none of the cases were true");
+    }
+
+    selection.destinationCity = city;
+    console.log(selection.destinationCity);
+});
+
+
+
+/*then pass the location to maps to centre on that point. */
+
+
+/*function getData(cb) {
+    var xhr = new XMLHttpRequest();
+
+    xhr.open("GET", "https://www.google.com");
+    xhr.send();
+
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            cb(JSON.parse(this.responseText));
         }
-        else {
-            console.log("nope :(");
-        }
-    });
+    };
 }
 
-/*call the function to set the types and pass to destinationSelection when inspire button clicked*/
-/*setTypes(setGeoString);
+function printDataToConsole(data) {
+    console.log(data);
+}
 
-console.log(destinationSelection);
+getData(printDataToConsole);
+
+*/
+
+
+
+/*$.get( "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Museum%20of%20Contemporary%20Art%20Australia&inputtype=textquery&key=AIzaSyBY0nEpb-qc6dxAR0UfKi1LnB0NU42uA70", function(data) {
+ 
+  console.log(data);
+});
+*/
+
+/*Get code working to request Place ID based on text... then can pass it the text from above. Using Google example atm */
+function initMap() {
+  // The location of Uluru
+  var uluru = {lat: -25.344, lng: 131.036};
+  // The map, centered at Uluru
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 4, center: uluru});
+  // The marker, positioned at Uluru
+  var marker = new google.maps.Marker({position: uluru, map: map});
+}
+
+
+
+$.ajax({
+    crossOrigin: true,
+    url: "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Museum%20of%20Contemporary%20Art%20Australia&inputtype=textquery&fields=id&key=AIzaSyBY0nEpb-qc6dxAR0UfKi1LnB0NU42uA70",
+    type: "GET",
+    dataType: 'jsonp',
+    cache: false,
+    success: function(response) {
+        console.log(response);
+    }
+});
+
+
+
 
 /*------------------------------------end of commemting  out ------------------------------------------------------------*/
 
@@ -79,185 +258,3 @@ relaxed  cold high              Iceland
 relaxed  cold medium            Norway 
 relaxed  cold low               Talin
 */
-
-
-
-var destinationString;
-
-var destinationSelection = {
-    activity: "activity",
-    temperature: "temperature",
-    price: "price",
-};
-
-var geoLocation;
-
-$(".adventure").on("click", function() {
-    var adventureLevel = $(this).attr("id");
-    destinationSelection.activity = adventureLevel;
-});
-
-$(".temperature").on("click", function() {
-    var temperatureLevel = $(this).attr("id");
-    destinationSelection.temperature = temperatureLevel;
-});
-
-$(".price").on("click", function() {
-    var price = $(this).attr("id");
-    destinationSelection.price = price;
-});
-
-$(".inspire").on("click", function() {
-    destinationString = destinationSelection.activity + destinationSelection.temperature + destinationSelection.price;
-    console.log(destinationString);
-
-    var geoLocation = destinationString;
-
-    switch (geoLocation) {
-        case 'activehothigh':
-            geoLocation = "Sydney";
-            break;
-
-        case "activehotmedium":
-            geoLocation = "Botswana";
-            break;
-
-        case "activehotlow":
-            geoLocation = "Cuba";
-            break;
-
-        case "activemildhigh":
-            geoLocation = "Queenstown";
-            break;
-
-        case 'activemildmedium':
-            geoLocation = "Costa Rica";
-            break;
-
-        case "activemildlow":
-            geoLocation = "Lake Titicaca";
-            break;
-
-        case "activecoldhigh ":
-            geoLocation = "Courchevel";
-            break;
-
-        case "activecoldmedium":
-            geoLocation = "Wanaka";
-            break;
-
-        case "activecoldlow ":
-            geoLocation = "Vogel";
-            break;
-
-        case 'recreationalhothigh':
-            geoLocation = "Monaco";
-            break;
-
-        case "recreationalhotmedium":
-            geoLocation = "Greece";
-            break;
-
-        case "recreationalhotlow":
-            geoLocation = "Thailand";
-            break;
-
-        case "recreationalmildhigh":
-            geoLocation = "Venice";
-            break;
-
-        case 'recreationalmildmedium':
-            geoLocation = "Cape Town";
-            break;
-
-        case "recreationalmildlow":
-            geoLocation = "Puerto Rico";
-            break;
-
-        case "recreationalcoldhigh ":
-            geoLocation = "Verbier";
-            break;
-
-        case "recreationalcoldmedium":
-            geoLocation = "Colonge";
-            break;
-
-        case "recreationalcoldlow ":
-            geoLocation = "Budapest";
-            break;
-
-        case 'relaxedhothigh':
-            geoLocation = "Barbados";
-            break;
-
-        case "relaxedhotmedium":
-            geoLocation = "Hawaii";
-            break;
-
-        case "relaxedhotlow":
-            geoLocation = "French Polynesia";
-            break;
-
-        case "relaxedmildhigh":
-            geoLocation = "Fiji";
-            break;
-
-        case 'relaxedmildmedium':
-            geoLocation = "Valencia";
-            break;
-
-        case "relaxedmildlow":
-            geoLocation = "Split";
-            break;
-
-        case "relaxedcoldhigh ":
-            geoLocation = "Iceland";
-            break;
-
-        case "relaxedcoldmedium":
-            geoLocation = "Norway";
-            break;
-
-        case "relaxedcoldlow ":
-            geoLocation = "Talin";
-            break;
-
-        default:
-            console.log("This is the default value when none of the cases were true");
-    }
-});
-
-console.log(geoLocation);
-
-/*then pass the location to maps to centre on that point. */
-
-
-/*function initMap() {
-    // The location of Uluru
-    var uluru = { lat: -25.344, lng: 131.036 };
-    // The map, centered at Uluru
-    var map = new google.maps.Map(
-        document.getElementById('map'), { zoom: 4, center: uluru });
-    // The marker, positioned at Uluru
-
-    var labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-    var locations = [
-        { lat: 40.785091, lng: -73.968285 },
-        { lat: 41.084045, lng: -73.874245 },
-        { lat: 40.754932, lng: -73.984016 }
-    ];
-
-    var markers = locations.map(function(location, i) {
-        return new google.maps.Marker({
-            position: location,
-            label: labels[i % labels.length]
-        });
-    });
-
-    var markerCluster = new MarkerClusterer(map, markers, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
-}*/
-
-
-
-
