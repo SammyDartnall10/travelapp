@@ -159,37 +159,6 @@ $(".inspire").on("click", function() {
 
 
 
-/*then pass the location to maps to centre on that point. */
-
-
-/*function getData(cb) {
-    var xhr = new XMLHttpRequest();
-
-    xhr.open("GET", "https://www.google.com");
-    xhr.send();
-
-    xhr.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            cb(JSON.parse(this.responseText));
-        }
-    };
-}
-
-function printDataToConsole(data) {
-    console.log(data);
-}
-
-getData(printDataToConsole);
-
-*/
-
-
-
-/*$.get( "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Museum%20of%20Contemporary%20Art%20Australia&inputtype=textquery&key=AIzaSyBY0nEpb-qc6dxAR0UfKi1LnB0NU42uA70", function(data) {
- 
-  console.log(data);
-});
-*/
 
 /*Get code working to request Place ID based on text... then can pass it the text from above. Using Google example atm */
 function initMap() {
@@ -203,6 +172,17 @@ function initMap() {
 }
 
 
+$(document).ready(function(){
+    $.get("https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Museum%20of%20Contemporary%20Art%20Australia&inputtype=textquery&fields=id&key=AIzaSyBY0nEpb-qc6dxAR0UfKi1LnB0NU42uA70", function(data, status){
+      console.log(data);
+    });
+});
+
+
+
+
+/*then pass the location to maps to centre on that point. 
+
 
 $.ajax({
     crossOrigin: true,
@@ -210,11 +190,48 @@ $.ajax({
     type: "GET",
     dataType: 'jsonp',
     cache: false,
-    success: function(response) {
+    success: function setData(response) {
         console.log(response);
-    }
+    },
 });
 
+
+$.ajax({
+    crossOrigin: true,
+    url: "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Museum%20of%20Contemporary%20Art%20Australia&inputtype=textquery&fields=id&key=AIzaSyBY0nEpb-qc6dxAR0UfKi1LnB0NU42uA70",
+    type: "GET",
+    dataType: 'jsonp',
+    cache: false,
+    success: function setData(response) {
+        console.log(response);
+    },
+});
+
+var xhr = new XMLHttpRequest();
+var data;
+
+xhr.open("GET", "https://swapi.co/api/");
+xhr.send();
+
+function setData(jsonData) {
+    data = jsonData;
+}
+
+xhr.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        setData(JSON.parse(this.responseText));
+    };
+}
+
+console.log(data);
+
+$.getJSON("https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Museum%20of%20Contemporary%20Art%20Australia&inputtype=textquery&fields=id&key=AIzaSyBY0nEpb-qc6dxAR0UfKi1LnB0NU42uA70?callback=?",function(json){
+  JSON.parse(this.responseText);
+  console.log(this.responseText);
+  
+});
+
+*/
 
 
 
@@ -258,3 +275,4 @@ relaxed  cold high              Iceland
 relaxed  cold medium            Norway 
 relaxed  cold low               Talin
 */
+
