@@ -1,4 +1,6 @@
-
+/*Using buttons as i will replace with words/images in the 
+squares in final design. Form didnt offer flexibilty I wanted to 
+make html element clickable bits... unless I didnt know how to achieve this*/
 
 
 /*setting object templates to be used by button selection*/
@@ -160,25 +162,136 @@ $(".inspire").on("click", function() {
 
 
 
-/*Get code working to request Place ID based on text... then can pass it the text from above. Using Google example atm */
+/*Get code working to request Place ID based on text... then can pass it the text from above. Using Google example atm or just use 
+lat/long options in case instead of place names? That way wouldnt have to get Place ID*/
+
+var map;
+
+var dummyCity = "Cape Town";
+
 function initMap() {
-  // The location of Uluru
-  var uluru = {lat: -25.344, lng: 131.036};
-  // The map, centered at Uluru
-  var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 4, center: uluru});
-  // The marker, positioned at Uluru
-  var marker = new google.maps.Marker({position: uluru, map: map});
+  // Create a map centered in Pyrmont, Sydney (Australia).
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -33.8666, lng: 151.1958},
+    zoom: 15
+  });
+
+  // Search for Google's office in Australia.
+  var request = {
+    location: map.getCenter(),
+    radius: '500',
+    query: dummyCity,
+  };
+
+  var service = new google.maps.places.PlacesService(map);
+  service.textSearch(request, callback);
+}
+
+// Checks that the PlacesServiceStatus is OK, and adds a marker
+// using the place ID and location from the PlacesService.
+function callback(results, status) {
+  if (status == google.maps.places.PlacesServiceStatus.OK) {
+    var marker = new google.maps.Marker({
+      map: map,
+      place: {
+        placeId: results[0].place_id,
+        location: results[0].geometry.location
+      }
+    });
+  }
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+
+/* Temp maps comment
+
+
+// The location of Uluru
+var uluru = { lat: -25.344, lng: 131.036 };
+
+
+var location = "latlong";
+
+function initMap() {
+    // The map, centered at Uluru
+    var map = new google.maps.Map(
+        document.getElementById('map'), { zoom: 4, center: location });
+    // The marker, positioned at Uluru
+    var marker = new google.maps.Marker({ position: location, map: map });
+}
+
+end of temop maps comment/*
+
+
+
+/* Ajax get request with help from fellow students on Slack.. keeps failing. 
+
+$.ajax({
+  type: 'GET',
+  url: "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Museum%20of%20Contemporary%20Art%20Australia&inputtype=textquery&fields=id&key=AIzaSyBY0nEpb-qc6dxAR0UfKi1LnB0NU42uA70",
+  crossDoamin: true,
+  dataType:'json',
+  headers: {
+    'Access-Control-Allow-Credentials' : true,
+    'Access-Control-Allow-Origin':'*',
+    'Access-Control-Allow-Methods':'GET',
+    'Access-Control-Allow-Headers':'application/json',
+  },
+  success: function(data) {
+    console.log(data);
+  },
+  error: function(error) {
+    console.log("FAIL....=================");
+  }
+});
+
+*/
+
+
+/* Using example from course notes - works with SWAPI URL, but not googlemaps one 
+function getData(cb) {
+    var xhr = new XMLHttpRequest();
+
+    xhr.open("GET", "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Museum%20of%20Contemporary%20Art%20Australia&inputtype=textquery&fields=id&key=AIzaSyBY0nEpb-qc6dxAR0UfKi1LnB0NU42uA70");
+    xhr.send();
+
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            cb(JSON.parse(this.responseText));
+        }
+    };
 }
 
 
-$(document).ready(function(){
-    $.get("https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Museum%20of%20Contemporary%20Art%20Australia&inputtype=textquery&fields=id&key=AIzaSyBY0nEpb-qc6dxAR0UfKi1LnB0NU42uA70", function(data, status){
-      console.log(data);
-    });
+function printDataToConsole(data) {
+    console.log(data);
+}
+
+getData(printDataToConsole);
+
+*/
+
+/* My attempt at ajax request... get a CORB error 
+
+$.ajax({
+    crossOrigin: true,
+    url: "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Museum%20of%20Contemporary%20Art%20Australia&inputtype=textquery&fields=id&key=AIzaSyBY0nEpb-qc6dxAR0UfKi1LnB0NU42uA70",
+    type: "GET",
+    dataType: 'jsonp',
+    cache: false,
+    success: function setData(response) {
+        console.log(response);
+    },
 });
 
+*/
 
+$.getJSON("https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Museum%20of%20Contemporary%20Art%20Australia&inputtype=textquery&fields=id&key=AIzaSyBY0nEpb-qc6dxAR0UfKi1LnB0NU42uA70?callback=?", function(json) {
+    JSON.parse(this.responseText);
+    console.log(this.responseText);
+
+});
 
 
 /*then pass the location to maps to centre on that point. 
@@ -275,4 +388,3 @@ relaxed  cold high              Iceland
 relaxed  cold medium            Norway 
 relaxed  cold low               Talin
 */
-
