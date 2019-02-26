@@ -189,9 +189,9 @@ var map;
 
 function initMap() {
     geocoder = new google.maps.Geocoder();
-    var latlng = new google.maps.LatLng(-34.397, 150.644);
+    var latlng = new google.maps.LatLng(-41.28664, 174.77557);
     var mapOptions = {
-        zoom: 8,
+        zoom: 5,
         center: latlng
     };
     map = new google.maps.Map(document.getElementById('map'), mapOptions);
