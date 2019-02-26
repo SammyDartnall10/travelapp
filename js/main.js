@@ -185,6 +185,8 @@ $(".inspire").on("click", function() {
 var geocoder;
 var map;
 
+/*Making initial map*/
+
 function initMap() {
     geocoder = new google.maps.Geocoder();
     var latlng = new google.maps.LatLng(-34.397, 150.644);
