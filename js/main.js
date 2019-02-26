@@ -157,51 +157,128 @@ $(".inspire").on("click", function() {
 
     selection.destinationCity = city;
     console.log(selection.destinationCity);
+
+    /*Geocoder... centres map using sity selected*/
+
+
+
+    function codeAddress() {
+        var address = city;
+        geocoder.geocode({ 'address': address }, function(results, status) {
+            if (status == 'OK') {
+                map.setCenter(results[0].geometry.location);
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location
+                });
+            }
+            else {
+                alert('Geocode was not successful for the following reason: ' + status);
+            }
+        });
+    }
+
+    codeAddress();
+
 });
 
-
-
-
-/*Get code working to request Place ID based on text... then can pass it the text from above. Using Google example atm or just use 
-lat/long options in case instead of place names? That way wouldnt have to get Place ID*/
-
+var geocoder;
 var map;
 
-var dummyCity = "Cape Town";
-
 function initMap() {
-  // Create a map centered in Pyrmont, Sydney (Australia).
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -33.8666, lng: 151.1958},
-    zoom: 15
-  });
+    geocoder = new google.maps.Geocoder();
+    var latlng = new google.maps.LatLng(-34.397, 150.644);
+    var mapOptions = {
+        zoom: 8,
+        center: latlng
+    };
+    map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-  // Search for Google's office in Australia.
-  var request = {
-    location: map.getCenter(),
-    radius: '500',
-    query: dummyCity,
-  };
-
-  var service = new google.maps.places.PlacesService(map);
-  service.textSearch(request, callback);
 }
 
-// Checks that the PlacesServiceStatus is OK, and adds a marker
-// using the place ID and location from the PlacesService.
-function callback(results, status) {
-  if (status == google.maps.places.PlacesServiceStatus.OK) {
-    var marker = new google.maps.Marker({
-      map: map,
-      place: {
-        placeId: results[0].place_id,
-        location: results[0].geometry.location
-      }
-    });
-  }
-}
 
-google.maps.event.addDomListener(window, 'load', initialize);
+/*Option number two..
+
+    var map;
+
+    function initialize() {
+        // Create a map centered in Pyrmont, Sydney (Australia)- cant figure out how to get lat/lng ahead of places search- Geocoding..
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: -33.8666, lng: 151.1958 },
+            zoom: 3
+        });
+
+        // Search for string - query from city/case switch above.
+        var request = {
+            location: map.getCenter(),
+            radius: '500',
+            query: city,
+
+        };
+
+        console.log(request);
+
+        var service = new google.maps.places.PlacesService(map);
+        service.textSearch(request, callback);
+    }
+
+    // Checks that the PlacesServiceStatus is OK, and adds a marker
+    // using the place ID and location from the PlacesService.
+    function callback(results, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+            var marker = new google.maps.Marker({
+                map: map,
+                place: {
+                    placeId: results[0].place_id,
+                    location: results[0].geometry.location
+                }
+            });
+        }
+    }
+
+    initialize();
+
+});
+
+*/
+/* Another way of places search...?
+
+    var map;
+    var service;
+    var infowindow;
+
+    function initialize() {
+        var pyrmont = new google.maps.LatLng(-33.8665433, 151.1956316);
+
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: pyrmont,
+            zoom: 15
+        });
+
+        var request = {
+            location: pyrmont,
+            radius: '500',
+            query: 'restaurant'
+        };
+
+        service = new google.maps.places.PlacesService(map);
+        service.textSearch(request, callback);
+    }
+
+    function callback(results, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+                var place = results[i];
+                createMarker(results[i]);
+            }
+        }
+    }
+    
+    initialize();
+
+});*/
+
+
 
 
 /* Temp maps comment
@@ -286,12 +363,13 @@ $.ajax({
 });
 
 */
-
+/*
 $.getJSON("https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Museum%20of%20Contemporary%20Art%20Australia&inputtype=textquery&fields=id&key=AIzaSyBY0nEpb-qc6dxAR0UfKi1LnB0NU42uA70?callback=?", function(json) {
     JSON.parse(this.responseText);
     console.log(this.responseText);
 
 });
+*/
 
 
 /*then pass the location to maps to centre on that point. 
