@@ -1,9 +1,11 @@
-/*Using buttons as i will replace with words/images in the 
-squares in final design. Form didnt offer flexibilty I wanted to 
-make html element clickable bits... unless I didnt know how to achieve this*/
+/*Declaring global variables*/
 
+var geocoder;
+var map;
+var infowindow;
+var marker;
 
-/*setting object templates to be used by button selection*/
+/*setting object template to be used by button selection - parse strings to make one keyword*/
 
 var destinationSelection = {
     activity: "activity",
@@ -11,32 +13,56 @@ var destinationSelection = {
     price: "price",
 };
 
-/*setting object templates for end destination city*/
+/*setting object templates for end destination city - lat and lng globally available*/
 
 var selection = {
     destinationCity: "destinationCity",
     geolocation: ["lat", "lng"],
 };
 
+/*Making initial map*/
+
+function initMap() {
+    geocoder = new google.maps.Geocoder();
+    var latlng = new google.maps.LatLng(-41.28664, 174.77557);
+    var mapOptions = {
+        zoom: 14,
+        center: latlng
+    };
+    map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+}
+
+/*Using buttons as i will replace with words/images in the 
+squares in final design. Form didnt offer flexibilty I wanted to 
+make html element clickable bits... unless I didnt know how to achieve this
+
+Update  - to be replaced with a CSV file after basic funtionality working*/
+
+
+
 /*when a button is clicked, set the variable as the button value*/
 
 $(".adventure").on("click", function() {
     var adventureLevel = $(this).attr("id");
     destinationSelection.activity = adventureLevel;
+    console.log(adventureLevel);
 });
 
 $(".temperature").on("click", function() {
     var temperatureLevel = $(this).attr("id");
     destinationSelection.temperature = temperatureLevel;
+    console.log(temperatureLevel);
 });
 
 $(".price").on("click", function() {
     var price = $(this).attr("id");
     destinationSelection.price = price;
+    console.log(price);
 });
 
 
-/*set destinationSelection as a combo of the button selections*/
+/*set destinationSelection as a combo of the button selections when 'inspire me' clicked*/
 
 $(".inspire").on("click", function(cb) {
     var destinationString = destinationSelection.activity + destinationSelection.temperature + destinationSelection.price;
@@ -44,7 +70,7 @@ $(".inspire").on("click", function(cb) {
     var city = destinationString;
 
     switch (destinationString) {
-        case 'activehothigh':
+        case "activehothigh":
             city = "Sydney";
             break;
 
@@ -68,7 +94,7 @@ $(".inspire").on("click", function(cb) {
             city = "Lake Titicaca";
             break;
 
-        case "activecoldhigh ":
+        case "activecoldhigh":
             city = "Courchevel";
             break;
 
@@ -76,11 +102,11 @@ $(".inspire").on("click", function(cb) {
             city = "Wanaka";
             break;
 
-        case "activecoldlow ":
+        case "activecoldlow":
             city = "Vogel";
             break;
 
-        case 'recreationalhothigh':
+        case "recreationalhothigh":
             city = "Monaco";
             break;
 
@@ -96,7 +122,7 @@ $(".inspire").on("click", function(cb) {
             city = "Venice";
             break;
 
-        case 'recreationalmildmedium':
+        case "recreationalmildmedium":
             city = "Cape Town";
             break;
 
@@ -104,7 +130,7 @@ $(".inspire").on("click", function(cb) {
             city = "Puerto Rico";
             break;
 
-        case "recreationalcoldhigh ":
+        case "recreationalcoldhigh":
             city = "Verbier";
             break;
 
@@ -112,11 +138,11 @@ $(".inspire").on("click", function(cb) {
             city = "Colonge";
             break;
 
-        case "recreationalcoldlow ":
+        case "recreationalcoldlow":
             city = "Budapest";
             break;
 
-        case 'relaxedhothigh':
+        case "relaxedhothigh":
             city = "Barbados";
             break;
 
@@ -132,7 +158,7 @@ $(".inspire").on("click", function(cb) {
             city = "Fiji";
             break;
 
-        case 'relaxedmildmedium':
+        case "relaxedmildmedium":
             city = "Valencia";
             break;
 
@@ -140,7 +166,7 @@ $(".inspire").on("click", function(cb) {
             city = "Split";
             break;
 
-        case "relaxedcoldhigh ":
+        case "relaxedcoldhigh":
             city = "Iceland";
             break;
 
@@ -148,7 +174,7 @@ $(".inspire").on("click", function(cb) {
             city = "Norway";
             break;
 
-        case "relaxedcoldlow ":
+        case "relaxedcoldlow":
             city = "Talin";
             break;
 
@@ -158,7 +184,7 @@ $(".inspire").on("click", function(cb) {
 
     selection.destinationCity = city;
     cb = city;
-    codeAddress(city);
+    codeAddress(city); //calls the codeAddress function, and so passes the city name to be geocoded
 
 });
 
@@ -183,12 +209,15 @@ function codeAddress(city) {
 
             location['marker'] = marker;
 
+            /*selection.geolocation global variable - pass the lat and lng to the object on line 19*/
+
             selection.geolocation = location;
             console.log(selection.geolocation);
             console.log(selection.geolocation.lat);
             console.log(selection.geolocation.lng);
             console.log(selection.destinationCity);
             return location;
+            //console logging to make sure code is running.. 
         }
         else {
             alert('Geocode was not successful for the following reason: ' + status);
@@ -196,15 +225,67 @@ function codeAddress(city) {
     });
 }
 
-/*Places Search based on geocoding and type of search - for this - restaurants- when button clicked*/
+/*Places Search based on geocoding and type of search - for this - bars- when button clicked*/
 
+function clearMarkers() {
+    setMapOnAll(null);
+}
 
 $("#bars").on("click", function() {
     console.log('working');
+
+    clearMarkers();
+
     var request = {
         location: selection.geolocation,
         center: { lat: selection.geolocation.lat, lng: selection.geolocation.lng },
-        radius: '500',
+        radius: '2000',
+        type: ['bar']
+    };
+
+    service = new google.maps.places.PlacesService(map);
+    service.nearbySearch(request, callback);
+
+
+    function callback(results, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+                place = results[i];
+                createMarker(results[i]);
+                console.log('First marker for' + place.name);
+            }
+        }
+    }
+
+    function createMarker(place) {
+        console.log("marker for " + place.name);
+        var marker = new google.maps.Marker({
+            map: map,
+            position: place.geometry.location
+        });
+
+    }
+
+    google.maps.event.addListener(marker, 'click', function() {
+        console.log(place.name);
+        infowindow.setContent = place.name;
+        infowindow.open(map, this);
+    });
+});
+
+
+/*Places Search based on geocoding and type of search - for this - restaurants- when button clicked*/
+
+
+$("#restaurants").on("click", function() {
+    console.log('working');
+    
+    clearMarkers();
+    
+    var request = {
+        location: selection.geolocation,
+        center: { lat: selection.geolocation.lat, lng: selection.geolocation.lng },
+        radius: '2000',
         type: ['restaurant']
     };
 
@@ -217,43 +298,116 @@ $("#bars").on("click", function() {
             for (var i = 0; i < results.length; i++) {
                 place = results[i];
                 createMarker(results[i]);
+                console.log('First marker for' + place.name);
             }
         }
     }
-    
-function createMarker(place) {
-    console.log('making markers');
-    var marker = new google.maps.Marker({
-        map: map,
-        position: place.geometry.location
-    });
+
+    function createMarker(place) {
+        console.log("marker for " + place.name);
+        var marker = new google.maps.Marker({
+            map: map,
+            position: place.geometry.location
+        });
+
+    }
 
     google.maps.event.addListener(marker, 'click', function() {
-        infowindow.setContent(place.name);
+        console.log(place.name);
+        infowindow.setContent = place.name;
         infowindow.open(map, this);
     });
-}
 });
 
+/*Places Search based on geocoding and type of search - for this - hotels- when button clicked*/
 
 
-
-/*Making initial map*/
-
-var geocoder;
-var map;
-
-
-function initMap() {
-    geocoder = new google.maps.Geocoder();
-    var latlng = new google.maps.LatLng(-41.28664, 174.77557);
-    var mapOptions = {
-        zoom: 14,
-        center: latlng
+$("#hotels").on("click", function() {
+    console.log('working');
+    
+    clearMarkers();
+    
+    var request = {
+        location: selection.geolocation,
+        center: { lat: selection.geolocation.lat, lng: selection.geolocation.lng },
+        radius: '2000',
+        type: ['lodging']
     };
-    map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-}
+    service = new google.maps.places.PlacesService(map);
+    service.nearbySearch(request, callback);
+
+
+    function callback(results, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+                place = results[i];
+                createMarker(results[i]);
+                console.log('First marker for' + place.name);
+            }
+        }
+    }
+
+    function createMarker(place) {
+        console.log("marker for " + place.name);
+        var marker = new google.maps.Marker({
+            map: map,
+            position: place.geometry.location
+        });
+
+    }
+
+    google.maps.event.addListener(marker, 'click', function() {
+        console.log(place.name);
+        infowindow.setContent = place.name;
+        infowindow.open(map, this);
+    });
+});
+
+/*Places Search based on geocoding and type of search - for this - interesting things- when button clicked*/
+
+
+$("#pointOfInterest").on("click", function() {
+    console.log('working');
+    
+    clearMarkers();
+    
+    var request = {
+        location: selection.geolocation,
+        center: { lat: selection.geolocation.lat, lng: selection.geolocation.lng },
+        radius: '2000',
+        type: ['art_gallery']
+    };
+
+    service = new google.maps.places.PlacesService(map);
+    service.nearbySearch(request, callback);
+
+
+    function callback(results, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+                place = results[i];
+                createMarker(results[i]);
+                console.log('First marker for' + place.name);
+            }
+        }
+    }
+
+    function createMarker(place) {
+        console.log("marker for " + place.name);
+        var marker = new google.maps.Marker({
+            map: map,
+            position: place.geometry.location
+        });
+
+    }
+
+    google.maps.event.addListener(marker, 'click', function() {
+        console.log(place.name);
+        infowindow.setContent = place.name;
+        infowindow.open(map, this);
+    });
+});
 
 
 // selectHotel(location); --> make nearbySearch() requests to move forward with selecting hotels/restaurants/etc
