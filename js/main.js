@@ -37,7 +37,7 @@ $(".price").on("click", function() {
 
 /*set destinationSelection as a combo of the button selections*/
 
-$(".inspire").on("click", function() {
+$(".inspire").on("click", function(cb) {
     var destinationString = destinationSelection.activity + destinationSelection.temperature + destinationSelection.price;
 
     var city = destinationString;
@@ -156,31 +156,42 @@ $(".inspire").on("click", function() {
     }
 
     selection.destinationCity = city;
-    console.log(selection.destinationCity);
+    cb=city;
 
-    /*Geocoder... centres map using sity selected*/
-
-
-
-    function codeAddress() {
-        var address = city;
-        geocoder.geocode({ 'address': address }, function(results, status) {
-            if (status == 'OK') {
-                map.setCenter(results[0].geometry.location);
-                var marker = new google.maps.Marker({
-                    map: map,
-                    position: results[0].geometry.location
-                });
-            }
-            else {
-                alert('Geocode was not successful for the following reason: ' + status);
-            }
-        });
-    }
-
-    codeAddress();
+    codeAddress(city);
 
 });
+
+    /*Geocoder... centres map using sity selected*/
+    
+function codeAddress(city) {
+    var address = city;
+    geocoder.geocode({ 'address': address }, function(results, status) {
+
+        if (status == 'OK') {
+            var location = {};
+
+            location['lat'] = results[0].geometry.location.lat();
+            location['lng'] = results[0].geometry.location.lng();
+
+            map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+
+            });
+
+            location['marker'] = marker;
+
+            return location;
+        }
+        else {
+            alert('Geocode was not successful for the following reason: ' + status);
+        }
+    });
+}
+
+
 
 var geocoder;
 var map;
@@ -197,6 +208,50 @@ function initMap() {
     map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
 }
+
+
+// selectHotel(location); --> make nearbySearch() requests to move forward with selecting hotels/restaurants/etc
+// at end of selectHotel() function, call selecBarsAndRestaurants(location); (save to global object - iterate through)
+
+
+
+/* 
+    
+    var service;
+    var infowindow;
+
+    function initialize() {
+        var pyrmont = new google.maps.LatLng(-33.8665433, 151.1956316);
+
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: pyrmont,
+            zoom: 15
+        });
+
+        var request = {
+            location: pyrmont,
+            radius: '500',
+            type: ['restaurant', 'bar' ...etc]
+        };
+
+        service = new google.maps.places.PlacesService(map);
+        service.textSearch(request, callback);
+    }
+
+    function callback(results, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+                var place = results[i];
+                createMarker(results[i]);
+            }
+        }
+    }
+    
+    initialize();
+
+});*/
+
+
 
 
 /*Option number two..
@@ -243,42 +298,7 @@ function initMap() {
 });
 
 */
-/* Another way of places search...?
 
-    var map;
-    var service;
-    var infowindow;
-
-    function initialize() {
-        var pyrmont = new google.maps.LatLng(-33.8665433, 151.1956316);
-
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: pyrmont,
-            zoom: 15
-        });
-
-        var request = {
-            location: pyrmont,
-            radius: '500',
-            query: 'restaurant'
-        };
-
-        service = new google.maps.places.PlacesService(map);
-        service.textSearch(request, callback);
-    }
-
-    function callback(results, status) {
-        if (status == google.maps.places.PlacesServiceStatus.OK) {
-            for (var i = 0; i < results.length; i++) {
-                var place = results[i];
-                createMarker(results[i]);
-            }
-        }
-    }
-    
-    initialize();
-
-});*/
 
 
 
@@ -467,4 +487,18 @@ relaxed  mild low               Split
 relaxed  cold high              Iceland
 relaxed  cold medium            Norway 
 relaxed  cold low               Talin
+*/
+
+/* Assuming you have a JSON file with city name, population, cost of living, and lat/lng  (or avg temp)
+1. User clicks baking
+2. Iterate through JSON and eliminate all items outside a specific temp
+3. user clicks active
+4. Iterate through remaining items and eliminate all items outside specific population range
+5. user clicks going all out
+6. Iterate through remaining and eliminat all items below a certain cost of living
+7. plot all those marker on a map and provide user with 5-10 options
+8. User clicks on a city out of a dropdown/list of buttons or on the marker if you're feeling dangerous
+9. Buttons for bars/hotels/accomodations are displayed
+10. User clicks on select a hotel button and is provided with a list of hotels in radio buttons, they select one and move to the next step
+11. User clicks on select bars/restaurants button and is provided with a list as checkboxes, they select one and move to the next step
 */
