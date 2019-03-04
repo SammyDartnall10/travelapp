@@ -15,6 +15,7 @@ var destinationSelection = {
 
 var selection = {
     destinationCity: "destinationCity",
+    geolocation: ["lat", "lng"],
 };
 
 /*when a button is clicked, set the variable as the button value*/
@@ -152,18 +153,17 @@ $(".inspire").on("click", function(cb) {
             break;
 
         default:
-            console.log("This is the default value when none of the cases were true");
+            console.log("Please answer all three questions");
     }
 
     selection.destinationCity = city;
-    cb=city;
-
+    cb = city;
     codeAddress(city);
 
 });
 
-    /*Geocoder... centres map using sity selected*/
-    
+/*Geocoder... centres map using city selected*/
+
 function codeAddress(city) {
     var address = city;
     geocoder.geocode({ 'address': address }, function(results, status) {
@@ -183,6 +183,11 @@ function codeAddress(city) {
 
             location['marker'] = marker;
 
+            selection.geolocation = location;
+            console.log(selection.geolocation);
+            console.log(selection.geolocation.lat);
+            console.log(selection.geolocation.lng);
+            console.log(selection.destinationCity);
             return location;
         }
         else {
@@ -191,12 +196,42 @@ function codeAddress(city) {
     });
 }
 
+/*Places Search based on geocoding and type of search - for this - restaurants- when button clicked*/
 
+$("#bars").on("click", function() {
+    console.log('working');
+
+var lat = selection.geolocation.lat;
+var lng = selection.geolocation.lng;
+var keyword = 'Bar';
+var output = 'json';
+var radius = 2000;
+var key = 'AIzaSyBY0nEpb-qc6dxAR0UfKi1LnB0NU42uA70';
+var type = 'bar';
+var parameters = 'keyword=' + keyword + '&radius=' + radius + '&location=' + lat + ',' + lng + '&key=' + key + '&type=' + type;
+var url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/' + output + '?' + parameters;
+
+console.log(url);
+
+$.getJSON(url, function (error, response, body) {
+  if (!error && response.statusCode == 200) {
+    var json = JSON.parse(body);
+    var results = json.results;
+
+    for (var i = 0; i < results.length; i++) {
+      console.log(results[i].place_id + ' - ' + results[i].name);
+    }
+  }
+});
+});
+
+    
+
+/*Making initial map*/
 
 var geocoder;
 var map;
 
-/*Making initial map*/
 
 function initMap() {
     geocoder = new google.maps.Geocoder();
