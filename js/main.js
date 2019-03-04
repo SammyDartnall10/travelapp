@@ -198,34 +198,45 @@ function codeAddress(city) {
 
 /*Places Search based on geocoding and type of search - for this - restaurants- when button clicked*/
 
+
 $("#bars").on("click", function() {
     console.log('working');
+    var request = {
+        location: selection.geolocation,
+        center: { lat: selection.geolocation.lat, lng: selection.geolocation.lng },
+        radius: '500',
+        type: ['restaurant']
+    };
 
-var lat = selection.geolocation.lat;
-var lng = selection.geolocation.lng;
-var keyword = 'Bar';
-var output = 'json';
-var radius = 2000;
-var key = 'AIzaSyBY0nEpb-qc6dxAR0UfKi1LnB0NU42uA70';
-var type = 'bar';
-var parameters = 'keyword=' + keyword + '&radius=' + radius + '&location=' + lat + ',' + lng + '&key=' + key + '&type=' + type;
-var url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/' + output + '?' + parameters;
+    service = new google.maps.places.PlacesService(map);
+    service.nearbySearch(request, callback);
 
-console.log(url);
 
-$.getJSON(url, function (error, response, body) {
-  if (!error && response.statusCode == 200) {
-    var json = JSON.parse(body);
-    var results = json.results;
-
-    for (var i = 0; i < results.length; i++) {
-      console.log(results[i].place_id + ' - ' + results[i].name);
+    function callback(results, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+                place = results[i];
+                createMarker(results[i]);
+            }
+        }
     }
-  }
-});
+    
+function createMarker(place) {
+    console.log('making markers');
+    var marker = new google.maps.Marker({
+        map: map,
+        position: place.geometry.location
+    });
+
+    google.maps.event.addListener(marker, 'click', function() {
+        infowindow.setContent(place.name);
+        infowindow.open(map, this);
+    });
+}
 });
 
-    
+
+
 
 /*Making initial map*/
 
@@ -237,7 +248,7 @@ function initMap() {
     geocoder = new google.maps.Geocoder();
     var latlng = new google.maps.LatLng(-41.28664, 174.77557);
     var mapOptions = {
-        zoom: 5,
+        zoom: 14,
         center: latlng
     };
     map = new google.maps.Map(document.getElementById('map'), mapOptions);
@@ -480,6 +491,29 @@ $.getJSON("https://maps.googleapis.com/maps/api/place/findplacefromtext/json?inp
 });
 
 */
+
+/*var lat = selection.geolocation.lat;
+var lng = selection.geolocation.lng;
+var keyword = 'Bar';
+var output = 'json';
+var radius = 2000;
+var key = 'AIzaSyBY0nEpb-qc6dxAR0UfKi1LnB0NU42uA70';
+var type = 'bar';
+var parameters = 'keyword=' + keyword + '&radius=' + radius + '&location=' + lat + ',' + lng + '&key=' + key + '&type=' + type;
+var url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/' + output + '?' + parameters;
+
+console.log(url);
+
+$.getJSON(url, function (error, response, body) {
+  if (!error && response.statusCode == 200) {
+    var json = JSON.parse(body);
+    var results = json.results;
+
+    for (var i = 0; i < results.length; i++) {
+      console.log(results[i].place_id + ' - ' + results[i].name);
+    }
+  }
+});*/
 
 
 
