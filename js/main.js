@@ -227,14 +227,9 @@ function codeAddress(city) {
 
 /*Places Search based on geocoding and type of search - for this - bars- when button clicked*/
 
-function clearMarkers() {
-    setMapOnAll(null);
-}
 
 $("#bars").on("click", function() {
     console.log('working');
-
-    clearMarkers();
 
     var request = {
         location: selection.geolocation,
@@ -280,8 +275,6 @@ $("#bars").on("click", function() {
 $("#restaurants").on("click", function() {
     console.log('working');
     
-    clearMarkers();
-    
     var request = {
         location: selection.geolocation,
         center: { lat: selection.geolocation.lat, lng: selection.geolocation.lng },
@@ -324,8 +317,7 @@ $("#restaurants").on("click", function() {
 
 $("#hotels").on("click", function() {
     console.log('working');
-    
-    clearMarkers();
+
     
     var request = {
         location: selection.geolocation,
@@ -369,8 +361,7 @@ $("#hotels").on("click", function() {
 
 $("#pointOfInterest").on("click", function() {
     console.log('working');
-    
-    clearMarkers();
+
     
     var request = {
         location: selection.geolocation,
