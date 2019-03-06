@@ -1,5 +1,167 @@
  #map {
-   width: 100%;
-   height: 400px;
-   background-color: grey;
+  width: 80%;
+  height: 400px;
+  background-color: grey;
  }
+
+ html {
+  scroll-behavior: smooth;
+ }
+
+ body {
+  background: url('../assets/images/background-travel.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+ }
+
+ .btn.btn-square {
+  border-radius: 0;
+  font-family: 'Montserrat', sans-serif;
+  border-width: 5px;
+  background-color: white;
+ }
+
+ .title {
+  font-family: 'Cormorant', serif;
+  top: calc(50% - 100px);
+  /* 100px is half the height..*/
+  position: absolute;
+ }
+
+ .city-name {
+  font-family: 'Cormorant', serif;
+ }
+
+ h2 {
+  margin-top: 10vh
+ }
+
+ .quiz {
+  height: 95vh;
+ }
+
+ .map-section {
+  height: 95vh;
+ }
+
+ .btn.input {
+  width: 25vw;
+  height: 10vh;
+  font-size: 10px;
+ }
+ 
+.input:active { 
+  background-color: yellow;
+}
+
+ .btn.switch {
+  font-size: 10px
+ }
+
+ .splash-page {
+  height: 85vh;
+ }
+
+ .splash-bottom {
+  height: 10vh;
+ }
+
+ .lets-go {
+  height: 5vh;
+ }
+
+ .inspire {
+  height: 5vh;
+  margin-top: 50px;
+  font-size: 15px
+ }
+
+ .bodycopy {
+  font-size: 15px;
+  font-family: 'Montserrat', sans-serif;
+  position: absolute;
+  top: calc(50% - 1px);
+ }
+
+
+ /*Small devices (landscape phones, 576px and up)*/
+
+ @media (min-width: 576px) {
+  .title {
+   font-size: 20px;
+   font-weight: bolder;
+  }
+  .city-name {
+   font-size: 20px;
+  }
+  .btn.input {
+   font-size: 10px
+  }
+  .btn.switch {
+   font-size: 10px
+  }
+ }
+
+ /*Medium devices (tablets, 768px and up)*/
+
+ @media (min-width: 768px) {
+  .title {
+   font-size: 50px;
+   font-weight: bolder;
+  }
+  .city-name {
+   font-size: 50px;
+  }
+  .btn.input {
+   font-size: 15px
+  }
+  .btn.switch {
+   font-size: 15px
+  }
+ }
+
+ /*Large devices (desktops, 992px and up)*/
+
+ @media (min-width: 992px) {
+  .title {
+   font-size: 80px;
+   font-weight: bolder;
+  }
+  .city-name {
+   font-size: 80px;
+  }
+  .btn.input {
+   font-size: 20px
+  }
+  .btn.switch {
+   font-size: 20px
+  }
+ }
+
+ /*Extra large devices (large desktops, 1200px and up)*/
+
+ @media (min-width: 1200px) {
+  .title {
+   font-size: 90px;
+   font-weight: bolder;
+  }
+  .city-name {
+   font-size: 90px;
+  }
+  .btn.input {
+   font-size: 20px
+  }
+  .btn.switch {
+   font-size: 20px
+  }
+ }
+
+
+
+
+
+ /* font-family: 'Cormorant', serif;
+   font-family: 'Montserrat', sans-serif;*/
+ 
