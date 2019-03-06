@@ -75,7 +75,7 @@ $(".inspire").on("click", function(cb) {
             break;
 
         case "activehotmedium":
-            city = "Botswana";
+            city = "Lima";
             break;
 
         case "activehotlow":
@@ -87,11 +87,11 @@ $(".inspire").on("click", function(cb) {
             break;
 
         case 'activemildmedium':
-            city = "Costa Rica";
+            city = "Rotorua";
             break;
 
         case "activemildlow":
-            city = "Lake Titicaca";
+            city = "Dubrovnik";
             break;
 
         case "activecoldhigh":
@@ -103,7 +103,7 @@ $(".inspire").on("click", function(cb) {
             break;
 
         case "activecoldlow":
-            city = "Vogel";
+            city = "Tallinn";
             break;
 
         case "recreationalhothigh":
@@ -111,11 +111,11 @@ $(".inspire").on("click", function(cb) {
             break;
 
         case "recreationalhotmedium":
-            city = "Greece";
+            city = "Granada";
             break;
 
         case "recreationalhotlow":
-            city = "Thailand";
+            city = "Goa";
             break;
 
         case "recreationalmildhigh":
@@ -127,7 +127,7 @@ $(".inspire").on("click", function(cb) {
             break;
 
         case "recreationalmildlow":
-            city = "Puerto Rico";
+            city = "Cancun";
             break;
 
         case "recreationalcoldhigh":
@@ -143,19 +143,19 @@ $(".inspire").on("click", function(cb) {
             break;
 
         case "relaxedhothigh":
-            city = "Barbados";
+            city = "Dubai";
             break;
 
         case "relaxedhotmedium":
-            city = "Hawaii";
+            city = "Honolulu";
             break;
 
         case "relaxedhotlow":
-            city = "French Polynesia";
+            city = "Pattaya";
             break;
 
         case "relaxedmildhigh":
-            city = "Fiji";
+            city = "Nadi";
             break;
 
         case "relaxedmildmedium":
@@ -167,15 +167,15 @@ $(".inspire").on("click", function(cb) {
             break;
 
         case "relaxedcoldhigh":
-            city = "Iceland";
+            city = "Reykjavik";
             break;
 
         case "relaxedcoldmedium":
-            city = "Norway";
+            city = "Helsinki";
             break;
 
         case "relaxedcoldlow":
-            city = "Talin";
+            city = "Riga";
             break;
 
         default:
@@ -185,7 +185,7 @@ $(".inspire").on("click", function(cb) {
     selection.destinationCity = city;
     cb = city;
     codeAddress(city); //calls the codeAddress function, and so passes the city name to be geocoded
-    
+
     //scroll to map section
     document.querySelector('.map-section').scrollIntoView({
         behavior: 'smooth'
@@ -231,10 +231,11 @@ function codeAddress(city) {
 }
 
 /*Places Search based on geocoding and type of search - for this - bars- when button clicked*/
+var infoWindowPlaces = [];
+var barName = [];
 
 
 $("#bars").on("click", function() {
-    console.log('working');
 
     var request = {
         location: selection.geolocation,
@@ -252,19 +253,24 @@ $("#bars").on("click", function() {
             for (var i = 0; i < results.length; i++) {
                 place = results[i];
                 createMarker(results[i]);
-                console.log('First marker for' + place.name);
             }
         }
     }
 
     function createMarker(place) {
-        console.log("marker for " + place.name);
+        infoWindowPlaces.push(place.name);
         var marker = new google.maps.Marker({
             map: map,
             position: place.geometry.location
         });
-
+        $.each(infoWindowPlaces, function(key, value) {
+            barName =value;
+            document.getElementById('bars-results').innerHTML = barName.toString();
+        });
+        console.log(barName);
     }
+
+    document.getElementById('bars-results').innerHTML = infoWindowPlaces;
 
     google.maps.event.addListener(marker, 'click', function() {
         console.log(place.name);
@@ -296,7 +302,6 @@ $("#restaurants").on("click", function() {
             for (var i = 0; i < results.length; i++) {
                 place = results[i];
                 createMarker(results[i]);
-                console.log('First marker for' + place.name);
             }
         }
     }
@@ -340,7 +345,6 @@ $("#hotels").on("click", function() {
             for (var i = 0; i < results.length; i++) {
                 place = results[i];
                 createMarker(results[i]);
-                console.log('First marker for' + place.name);
             }
         }
     }
@@ -384,7 +388,6 @@ $("#pointOfInterest").on("click", function() {
             for (var i = 0; i < results.length; i++) {
                 place = results[i];
                 createMarker(results[i]);
-                console.log('First marker for' + place.name);
             }
         }
     }
@@ -411,7 +414,7 @@ $(".lets-go").on("click", function() {
     });
 });
 
-map-section
+
 
 
 // selectHotel(location); --> make nearbySearch() requests to move forward with selecting hotels/restaurants/etc
