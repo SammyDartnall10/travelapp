@@ -185,6 +185,11 @@ $(".inspire").on("click", function(cb) {
     selection.destinationCity = city;
     cb = city;
     codeAddress(city); //calls the codeAddress function, and so passes the city name to be geocoded
+    
+    //scroll to map section
+    document.querySelector('.map-section').scrollIntoView({
+        behavior: 'smooth'
+    });
 
 });
 
@@ -274,7 +279,7 @@ $("#bars").on("click", function() {
 
 $("#restaurants").on("click", function() {
     console.log('working');
-    
+
     var request = {
         location: selection.geolocation,
         center: { lat: selection.geolocation.lat, lng: selection.geolocation.lng },
@@ -318,7 +323,7 @@ $("#restaurants").on("click", function() {
 $("#hotels").on("click", function() {
     console.log('working');
 
-    
+
     var request = {
         location: selection.geolocation,
         center: { lat: selection.geolocation.lat, lng: selection.geolocation.lng },
@@ -362,7 +367,7 @@ $("#hotels").on("click", function() {
 $("#pointOfInterest").on("click", function() {
     console.log('working');
 
-    
+
     var request = {
         location: selection.geolocation,
         center: { lat: selection.geolocation.lat, lng: selection.geolocation.lng },
@@ -399,6 +404,14 @@ $("#pointOfInterest").on("click", function() {
         infowindow.open(map, this);
     });
 });
+
+$(".lets-go").on("click", function() {
+    document.querySelector('.quiz').scrollIntoView({
+        behavior: 'smooth'
+    });
+});
+
+map-section
 
 
 // selectHotel(location); --> make nearbySearch() requests to move forward with selecting hotels/restaurants/etc
