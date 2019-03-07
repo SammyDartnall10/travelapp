@@ -4,8 +4,9 @@ var geocoder;
 var map;
 var infowindow;
 var marker;
+var cityData;
 
-/*setting object template to be used by button selection - parse strings to make one keyword*/
+/*setting object template to be used by button selection*/
 
 var destinationSelection = {
     activity: "activity",
@@ -20,6 +21,19 @@ var selection = {
     geolocation: ["lat", "lng"],
 };
 
+/*Pulling in JSON data*/
+
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        cityData = JSON.parse(this.responseText);
+        console.log(cityData);
+    }
+};
+
+xmlhttp.open("GET", "../assets/data/convertcsv.json", true);
+xmlhttp.send();
+
 /*Making initial map*/
 
 function initMap() {
@@ -30,16 +44,7 @@ function initMap() {
         center: latlng
     };
     map = new google.maps.Map(document.getElementById('map'), mapOptions);
-
 }
-
-/*Using buttons as i will replace with words/images in the 
-squares in final design. Form didnt offer flexibilty I wanted to 
-make html element clickable bits... unless I didnt know how to achieve this
-
-Update  - to be replaced with a CSV file after basic funtionality working*/
-
-
 
 /*when a button is clicked, set the variable as the button value*/
 
@@ -61,10 +66,93 @@ $(".price").on("click", function() {
     console.log(price);
 });
 
+/*First step of selection - filter objects by adventure level*/
 
-/*set destinationSelection as a combo of the button selections when 'inspire me' clicked*/
+function getAdventure(obj, key, val) {
+    var adventureSelections = [];
+    for (var i in obj) {
+        if (!obj.hasOwnProperty(i)) continue;
+        if (typeof obj[i] == 'object') {
+            adventureSelections = adventureSelections.concat(getAdventure(obj[i], key, val));
+        }
+        else
+            //if key matches and value matches or if key matches and value is not passed (eliminating the case where key matches but passed value does not)
+            if (i == key && obj[i] == val || i == key && val == '') { //
+                adventureSelections.push(obj);
+            }
+        else if (obj[i] == val && key == '') {
+            //only add if the object is not already in the array
+            if (adventureSelections.lastIndexOf(obj) == -1) {
+                adventureSelections.push(obj);
+            }
+        }
+    }
+    getTemperature(adventureSelections, '', destinationSelection.temperature);
+    return adventureSelections;
+}
+
+/*Second step of selection - filter objects by temperature*/
+
+function getTemperature(obj, key, val) {
+    var tempSelections = [];
+    for (var i in obj) {
+        if (!obj.hasOwnProperty(i)) continue;
+        if (typeof obj[i] == 'object') {
+            tempSelections = tempSelections.concat(getTemperature(obj[i], key, val));
+        }
+        else
+            //if key matches and value matches or if key matches and value is not passed (eliminating the case where key matches but passed value does not)
+            if (i == key && obj[i] == val || i == key && val == '') { //
+                tempSelections.push(obj);
+            }
+        else if (obj[i] == val && key == '') {
+            //only add if the object is not already in the array
+            if (tempSelections.lastIndexOf(obj) == -1) {
+                tempSelections.push(obj);
+            }
+        }
+    }
+    
+    getCost(tempSelections, '', destinationSelection.price);
+    return tempSelections;
+}
+
+/*Third step of selection - filter objects by price - note var costSelections 
+declared outside of function, to be passed back to #inspire onclick event*/
+
+var costSelections;
+
+function getCost(obj, key, val) {
+    costSelections = [];
+    for (var i in obj) {
+        if (!obj.hasOwnProperty(i)) continue;
+        if (typeof obj[i] == 'object') {
+            costSelections = costSelections.concat(getCost(obj[i], key, val));
+        }
+        else
+            //if key matches and value matches or if key matches and value is not passed (eliminating the case where key matches but passed value does not)
+            if (i == key && obj[i] == val || i == key && val == '') { //
+                costSelections.push(obj);
+            }
+        else if (obj[i] == val && key == '') {
+            //only add if the object is not already in the array
+            if (costSelections.lastIndexOf(obj) == -1) {
+                costSelections.push(obj);
+            }
+        }
+    }
+    return costSelections;
+}
+
+
+/*set intialCities based on button selections. Will pass city values to geolocaiton, mark all on map*/
 
 $(".inspire").on("click", function(cb) {
+    getAdventure(cityData, '', destinationSelection.activity);
+    var initialCities = costSelections;
+    console.log(initialCities);
+    
+/*keeping case switch to preserve functionality until JSON data up and running*/    
     var destinationString = destinationSelection.activity + destinationSelection.temperature + destinationSelection.price;
 
     var city = destinationString;
@@ -264,13 +352,21 @@ $("#bars").on("click", function() {
             position: place.geometry.location
         });
         $.each(infoWindowPlaces, function(key, value) {
-            barName =value;
-            document.getElementById('bars-results').innerHTML = barName.toString();
+            barName = value;
+
+            //document.getElementById('bars-results').innerHTML = barName.toString();
+            //var child = document.createElement('value');
+            //child.innerHTML = value;
+            //child = child.firstChild;
+            //document.getElementById('bar-results').appendChild(child);
         });
         console.log(barName);
+
     }
 
-    document.getElementById('bars-results').innerHTML = infoWindowPlaces;
+    //document.getElementById('bars-results').innerHTML = infoWindowPlaces;
+
+
 
     google.maps.event.addListener(marker, 'click', function() {
         console.log(place.name);
