@@ -14,7 +14,8 @@ var destinationSelection = {
     price: "price",
 };
 
-/*setting object templates for end destination city - lat and lng globally available*/
+/*setting object templates for end destination city - lat and lng globally 
+available */
 
 var selection = {
     destinationCity: "destinationCity",
@@ -117,7 +118,7 @@ function getTemperature(obj, key, val) {
     return tempSelections;
 }
 
-/*Third step of selection - filter objects by price - note var costSelections 
+/*Third step of selection - filter objects by price - var costSelections 
 declared outside of function, to be passed back to #inspire onclick event*/
 
 var costSelections;
