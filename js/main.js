@@ -181,9 +181,10 @@ function codeAddress2(cities) {
                     position: results[0].geometry.location
 
                 });
+                markers.push(marker);
 
                 marker.addListener('click', function() {
-                    map.setZoom(12);
+                    map.setZoom(13);
                     map.setCenter(marker.getPosition());
                     document.getElementById("reveal-buttons").style.visibility = "visible";
                     endLocation = marker.getPosition();
@@ -225,10 +226,13 @@ function codeAddress2(cities) {
 /*Places Search based on geocoding and type of search - for this - bars- when button clicked*/
 var infoWindowPlaces = [];
 var barName = [];
+var markers = [];
 
 
 $("#bars").on("click", function() {
 
+    deleteMarkers();
+    
     var request = {
         location: endLocation,
         center: { lat: endLocation.lat, lng: endLocation.lng },
@@ -250,33 +254,23 @@ $("#bars").on("click", function() {
     }
 
     function createMarker(place) {
-        infoWindowPlaces.push(place.name);
+
         var marker = new google.maps.Marker({
             map: map,
             position: place.geometry.location
         });
-        $.each(infoWindowPlaces, function(key, value) {
-            barName = value;
-
-            //document.getElementById('bars-results').innerHTML = barName.toString();
-            //var child = document.createElement('value');
-            //child.innerHTML = value;
-            //child = child.firstChild;
-            //document.getElementById('bar-results').appendChild(child);
+        var infowindow = new google.maps.InfoWindow({
+            content: place.name
         });
-        console.log(barName);
 
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map, marker);
+            document.getElementById('bars-results').insertAdjacentHTML('beforeend', place.name); /*need to make this call a function instead*/
+            /*function here to do some kind of google search?*/
+        });
+        markers.push(marker);
     }
-
-    //document.getElementById('bars-results').innerHTML = infoWindowPlaces;
-
-
-
-    google.maps.event.addListener(marker, 'click', function() {
-        console.log(place.name);
-        infowindow.setContent = place.name;
-        infowindow.open(map, this);
-    });
+    
 });
 
 
@@ -284,6 +278,8 @@ $("#bars").on("click", function() {
 
 
 $("#restaurants").on("click", function() {
+    
+    deleteMarkers();
 
     var request = {
         location: endLocation,
@@ -306,26 +302,30 @@ $("#restaurants").on("click", function() {
     }
 
     function createMarker(place) {
-        console.log("marker for " + place.name);
+
         var marker = new google.maps.Marker({
             map: map,
             position: place.geometry.location
         });
+        var infowindow = new google.maps.InfoWindow({
+            content: place.name
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map, marker);
+        });
+        markers.push(marker);
 
     }
-
-    google.maps.event.addListener(marker, 'click', function() {
-        console.log(place.name);
-        infowindow.setContent = place.name;
-        infowindow.open(map, this);
-    });
 });
 
 /*Places Search based on geocoding and type of search - for this - hotels- when button clicked*/
 
 
 $("#hotels").on("click", function() {
-    
+
+    deleteMarkers();
+
     var request = {
         location: endLocation,
         center: { lat: endLocation.lat, lng: endLocation.lng },
@@ -338,6 +338,7 @@ $("#hotels").on("click", function() {
 
 
     function callback(results, status) {
+
         if (status == google.maps.places.PlacesServiceStatus.OK) {
             for (var i = 0; i < results.length; i++) {
                 place = results[i];
@@ -347,26 +348,31 @@ $("#hotels").on("click", function() {
     }
 
     function createMarker(place) {
-        console.log("marker for " + place.name);
+
         var marker = new google.maps.Marker({
             map: map,
             position: place.geometry.location
         });
+        var infowindow = new google.maps.InfoWindow({
+            content: place.name
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map, marker);
+        });
+        markers.push(marker);
 
     }
-
-    google.maps.event.addListener(marker, 'click', function() {
-        console.log(place.name);
-        infowindow.setContent = place.name;
-        infowindow.open(map, this);
-    });
 });
+
 
 /*Places Search based on geocoding and type of search - for this - interesting things- when button clicked*/
 
 
 $("#pointOfInterest").on("click", function() {
-    
+
+    deleteMarkers();
+
     var request = {
         location: endLocation,
         center: { lat: endLocation.lat, lng: endLocation.lng },
@@ -379,6 +385,7 @@ $("#pointOfInterest").on("click", function() {
 
 
     function callback(results, status) {
+
         if (status == google.maps.places.PlacesServiceStatus.OK) {
             for (var i = 0; i < results.length; i++) {
                 place = results[i];
@@ -388,20 +395,37 @@ $("#pointOfInterest").on("click", function() {
     }
 
     function createMarker(place) {
-        console.log("marker for " + place.name);
+
         var marker = new google.maps.Marker({
             map: map,
             position: place.geometry.location
         });
+        var infowindow = new google.maps.InfoWindow({
+            content: place.name
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map, marker);
+        });
+        markers.push(marker);
 
     }
-
-    google.maps.event.addListener(marker, 'click', function() {
-        console.log(place.name);
-        infowindow.setContent = place.name;
-        infowindow.open(map, this);
-    });
 });
+
+function setMapOnAll(map) {
+    for (var i = 0; i < markers.length; i++) {
+        markers[i].setMap(map);
+    }
+}
+
+function clearMarkers() {
+    setMapOnAll(null);
+}
+
+function deleteMarkers() {
+    clearMarkers();
+    markers = [];
+}
 
 $(".lets-go").on("click", function() {
     document.querySelector('.quiz').scrollIntoView({
@@ -412,9 +436,13 @@ $(".lets-go").on("click", function() {
 
 
 
-// selectHotel(location); --> make nearbySearch() requests to move forward with selecting hotels/restaurants/etc
-// at end of selectHotel() function, call selecBarsAndRestaurants(location); (save to global object - iterate through)
 
+
+//document.getElementById('bars-results').innerHTML = barName.toString();
+//var child = document.createElement('value');
+//child.innerHTML = value;
+//child = child.firstChild;
+//document.getElementById('bar-results').appendChild(child);
 
 
 /* 
