@@ -22,6 +22,9 @@ var selection = {
     geolocation: ["lat", "lng"],
 };
 
+
+var cityInfo = [];
+
 /*Pulling in JSON data*/
 
 var xmlhttp = new XMLHttpRequest();
@@ -41,7 +44,7 @@ function initMap() {
     geocoder = new google.maps.Geocoder();
     var latlng = new google.maps.LatLng(-41.28664, 174.77557);
     var mapOptions = {
-        zoom: 14,
+        zoom: 1,
         center: latlng
     };
     map = new google.maps.Map(document.getElementById('map'), mapOptions);
@@ -88,8 +91,7 @@ function getAdventure(obj, key, val) {
             }
         }
     }
-    getTemperature(adventureSelections, '', destinationSelection.temperature);
-    return adventureSelections;
+    return getTemperature(adventureSelections, '', destinationSelection.temperature);
 }
 
 /*Second step of selection - filter objects by temperature*/
@@ -113,15 +115,11 @@ function getTemperature(obj, key, val) {
             }
         }
     }
-    
-    getCost(tempSelections, '', destinationSelection.price);
-    return tempSelections;
+
+    return getCost(tempSelections, '', destinationSelection.price);
 }
 
-/*Third step of selection - filter objects by price - var costSelections 
-declared outside of function, to be passed back to #inspire onclick event*/
-
-var costSelections;
+/*Third step of selection - filter objects by price -  to be passed back to #inspire onclick event*/
 
 function getCost(obj, key, val) {
     costSelections = [];
@@ -149,131 +147,9 @@ function getCost(obj, key, val) {
 /*set intialCities based on button selections. Will pass city values to geolocaiton, mark all on map*/
 
 $(".inspire").on("click", function(cb) {
-    getAdventure(cityData, '', destinationSelection.activity);
-    var initialCities = costSelections;
-    console.log(initialCities);
-    
-/*keeping case switch to preserve functionality until JSON data up and running*/    
-    var destinationString = destinationSelection.activity + destinationSelection.temperature + destinationSelection.price;
 
-    var city = destinationString;
-
-    switch (destinationString) {
-        case "activehothigh":
-            city = "Sydney";
-            break;
-
-        case "activehotmedium":
-            city = "Lima";
-            break;
-
-        case "activehotlow":
-            city = "Cuba";
-            break;
-
-        case "activemildhigh":
-            city = "Queenstown";
-            break;
-
-        case 'activemildmedium':
-            city = "Rotorua";
-            break;
-
-        case "activemildlow":
-            city = "Dubrovnik";
-            break;
-
-        case "activecoldhigh":
-            city = "Courchevel";
-            break;
-
-        case "activecoldmedium":
-            city = "Wanaka";
-            break;
-
-        case "activecoldlow":
-            city = "Tallinn";
-            break;
-
-        case "recreationalhothigh":
-            city = "Monaco";
-            break;
-
-        case "recreationalhotmedium":
-            city = "Granada";
-            break;
-
-        case "recreationalhotlow":
-            city = "Goa";
-            break;
-
-        case "recreationalmildhigh":
-            city = "Venice";
-            break;
-
-        case "recreationalmildmedium":
-            city = "Cape Town";
-            break;
-
-        case "recreationalmildlow":
-            city = "Cancun";
-            break;
-
-        case "recreationalcoldhigh":
-            city = "Verbier";
-            break;
-
-        case "recreationalcoldmedium":
-            city = "Colonge";
-            break;
-
-        case "recreationalcoldlow":
-            city = "Budapest";
-            break;
-
-        case "relaxedhothigh":
-            city = "Dubai";
-            break;
-
-        case "relaxedhotmedium":
-            city = "Honolulu";
-            break;
-
-        case "relaxedhotlow":
-            city = "Pattaya";
-            break;
-
-        case "relaxedmildhigh":
-            city = "Nadi";
-            break;
-
-        case "relaxedmildmedium":
-            city = "Valencia";
-            break;
-
-        case "relaxedmildlow":
-            city = "Split";
-            break;
-
-        case "relaxedcoldhigh":
-            city = "Reykjavik";
-            break;
-
-        case "relaxedcoldmedium":
-            city = "Helsinki";
-            break;
-
-        case "relaxedcoldlow":
-            city = "Riga";
-            break;
-
-        default:
-            console.log("Please answer all three questions");
-    }
-
-    selection.destinationCity = city;
-    cb = city;
-    codeAddress(city); //calls the codeAddress function, and so passes the city name to be geocoded
+    var initialCities = getAdventure(cityData, '', destinationSelection.activity);
+    codeAddress2(initialCities);
 
     //scroll to map section
     document.querySelector('.map-section').scrollIntoView({
@@ -282,42 +158,69 @@ $(".inspire").on("click", function(cb) {
 
 });
 
-/*Geocoder... centres map using city selected*/
 
-function codeAddress(city) {
-    var address = city;
-    geocoder.geocode({ 'address': address }, function(results, status) {
+/*Geocoder Google API*/
+var endLocation;
 
-        if (status == 'OK') {
-            var location = {};
+function codeAddress2(cities) {
 
-            location['lat'] = results[0].geometry.location.lat();
-            location['lng'] = results[0].geometry.location.lng();
+    for (var i = 0; i < cities.length; i++) {
+        var city = cities[i]['city'];
 
-            map.setCenter(results[0].geometry.location);
-            var marker = new google.maps.Marker({
-                map: map,
-                position: results[0].geometry.location
+        geocoder.geocode({ 'address': city }, function(results, status) {
 
-            });
+            if (status == 'OK') {
+                var location = {};
 
-            location['marker'] = marker;
+                location['lat'] = results[0].geometry.location.lat();
+                location['lng'] = results[0].geometry.location.lng();
 
-            /*selection.geolocation global variable - pass the lat and lng to the object on line 19*/
+                map.setCenter(results[0].geometry.location);
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location
 
-            selection.geolocation = location;
-            console.log(selection.geolocation);
-            console.log(selection.geolocation.lat);
-            console.log(selection.geolocation.lng);
-            console.log(selection.destinationCity);
-            return location;
-            //console logging to make sure code is running.. 
-        }
-        else {
-            alert('Geocode was not successful for the following reason: ' + status);
-        }
-    });
+                });
+
+                marker.addListener('click', function() {
+                    map.setZoom(12);
+                    map.setCenter(marker.getPosition());
+                    document.getElementById("reveal-buttons").style.visibility = "visible";
+                    endLocation = marker.getPosition();
+                    console.log(endLocation);
+                    console.log(typeof(endLocation));
+                    var infowindow = new google.maps.InfoWindow({
+                        content: '<p>Marker Location:' + marker.getPosition() + '</p>'
+                    });
+
+                    google.maps.event.addListener(marker, 'click', function() {
+                        infowindow.open(map, marker);
+                    });
+                });
+
+                location['marker'] = marker;
+
+                /*selection.geolocation global variable - pass the lat and lng to the object on line 19*/
+
+
+                selection.geolocation = location;
+
+                var cityInfoObject = {};
+                cityInfoObject['cityName'] = city;
+                cityInfoObject['locationInfo'] = location;
+                cityInfo.push(cityInfoObject);
+
+                console.log(selection)
+                return location;
+                //console logging to make sure code is running.. 
+            }
+            else {
+                alert('Geocode was not successful for the following reason: ' + status);
+            }
+        });
+    }
 }
+
 
 /*Places Search based on geocoding and type of search - for this - bars- when button clicked*/
 var infoWindowPlaces = [];
@@ -327,8 +230,8 @@ var barName = [];
 $("#bars").on("click", function() {
 
     var request = {
-        location: selection.geolocation,
-        center: { lat: selection.geolocation.lat, lng: selection.geolocation.lng },
+        location: endLocation,
+        center: { lat: endLocation.lat, lng: endLocation.lng },
         radius: '2000',
         type: ['bar']
     };
@@ -381,11 +284,10 @@ $("#bars").on("click", function() {
 
 
 $("#restaurants").on("click", function() {
-    console.log('working');
 
     var request = {
-        location: selection.geolocation,
-        center: { lat: selection.geolocation.lat, lng: selection.geolocation.lng },
+        location: endLocation,
+        center: { lat: endLocation.lat, lng: endLocation.lng },
         radius: '2000',
         type: ['restaurant']
     };
@@ -423,12 +325,10 @@ $("#restaurants").on("click", function() {
 
 
 $("#hotels").on("click", function() {
-    console.log('working');
-
-
+    
     var request = {
-        location: selection.geolocation,
-        center: { lat: selection.geolocation.lat, lng: selection.geolocation.lng },
+        location: endLocation,
+        center: { lat: endLocation.lat, lng: endLocation.lng },
         radius: '2000',
         type: ['lodging']
     };
@@ -466,12 +366,10 @@ $("#hotels").on("click", function() {
 
 
 $("#pointOfInterest").on("click", function() {
-    console.log('working');
-
-
+    
     var request = {
-        location: selection.geolocation,
-        center: { lat: selection.geolocation.lat, lng: selection.geolocation.lng },
+        location: endLocation,
+        center: { lat: endLocation.lat, lng: endLocation.lng },
         radius: '2000',
         type: ['art_gallery']
     };
