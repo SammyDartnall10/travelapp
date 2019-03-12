@@ -49,10 +49,10 @@ that you created as part of the design process. These files should themselves ei
 The website has a number of deployed features, but also a few that may be implemented at a later date. 
 
 <h3>Existing Features</h3>
- * Categorisation of cities based on three factors 
-    * Cost of living 
-    * Average temperature 
-    * Development of tourism industry
+ Categorisation of cities based on three factors 
+* Cost of living 
+* Average temperature 
+* Development of tourism industry
 
 Resources for each of these are as follows: 
 * Cost of living (https://www.numbeo.com/cost-of-living/rankings_by_country.jsp?title=2018)
@@ -113,7 +113,8 @@ see if they could get to the end goal of a series of city, and corresponding bar
 
 UI functionality was tested in all available browsers as follows: 
 
-
+<img src="assets/readme/elements-check.png">
+<img src="assets/readme/layout-check.png">
 
 
 <h2>Deployment</h2>
@@ -121,21 +122,26 @@ GitHub has been used throughout this project to maintain version control as feat
 
 The site has also been deployed using GitHub pages - this is simply a process of in settings for the project, setting source to master branch under GitHub pages and saving the changes. The resulting link can then be used to access the page. 
 
-Final deployed site is here: https://sammydartnall10.github.io/ucd-icarus/
+Final deployed site is here: https://sammydartnall10.github.io/travelapp/
 
 <h2>Credits</h2>
 
 <h3>Content</h3>
-The intro text for the music page has been taken from thier biography on spotify (found here: https://open.spotify.com/artist/0nUF7iT0e6D5xEl743Jfu3/about)
+As mentioned above, data is available from these sources: 
+
+* Cost of living (https://www.numbeo.com/cost-of-living/rankings_by_country.jsp?title=2018)
+* Average temperature (https://en.wikipedia.org/wiki/List_of_countries_by_average_yearly_temperature)
+* Development of tourism industry (http://www.adventureindex.travel/downloads.htm)
 
 
 <h3>Media</h3>
-Intro text and images of the band in each of the news articles has been taken from the articles themselves, found here: 
-https://londontheinside.com/interview-icarus/
-and here:
-https://www.fabriclondon.com/blog/view/introducing-icarus-and-their-indicative-promotional-mix
+Background image from shutterstock and edited myself with photoshop. 
 
 <h2>Acknowledgements</h2>
-I received inspiration for this project from the band themsleves, thier social media and online content - as current artists I have tried to produce something that was in keeping with their look and feel. 
+General credit and thanks to tutors and the student community of Code Institute, 
+helping me to unpick probelms as they arose, and build understanding.
 
-I also received direction from my ment
+Credit also specifically to my mentor, who not only helped me fix problems and explain 
+concepts, but also with: 
+*narrowing down the intial concept to an acheivable scope
+*explaining async functions, and how to manage output from them 
