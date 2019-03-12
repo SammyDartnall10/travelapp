@@ -4,7 +4,7 @@ var geocoder;
 var map;
 var infowindow;
 var marker;
-var cityData;
+var cityInfo = [];
 
 /*setting object template to be used by button selection*/
 
@@ -22,8 +22,7 @@ var selection = {
     geolocation: ["lat", "lng"],
 };
 
-
-var cityInfo = [];
+var cityData;
 
 /*Pulling in JSON data*/
 
@@ -35,7 +34,7 @@ xmlhttp.onreadystatechange = function() {
     }
 };
 
-xmlhttp.open("GET", "../assets/data/convertcsv.json", true);
+xmlhttp.open("GET", "assets/data/convertcsv.json", true);
 xmlhttp.send();
 
 /*Making initial map*/
@@ -166,6 +165,7 @@ function codeAddress2(cities) {
 
     for (var i = 0; i < cities.length; i++) {
         var city = cities[i]['city'];
+        console.log(city);
 
         geocoder.geocode({ 'address': city }, function(results, status) {
 
@@ -211,7 +211,7 @@ function codeAddress2(cities) {
                 cityInfoObject['locationInfo'] = location;
                 cityInfo.push(cityInfoObject);
 
-                console.log(selection)
+                console.log(selection);
                 return location;
                 //console logging to make sure code is running.. 
             }
