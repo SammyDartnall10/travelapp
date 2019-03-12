@@ -98,6 +98,12 @@
 
 #reveal-buttons{
  visibility: hidden;
+ margin-top: 50px;
+}
+
+#book{
+ visibility: hidden;
+ margin-top: 50px;
 }
 
 
@@ -105,11 +111,11 @@
 
  @media (min-width: 576px) {
   .title {
-   font-size: 20px;
-   font-weight: bolder;
+   font-size: 25px;
+
   }
   .city-name {
-   font-size: 20px;
+   font-size: 16px;
   }
   .btn.input {
    font-size: 10px
@@ -132,11 +138,11 @@
 
  @media (min-width: 768px) {
   .title {
-   font-size: 50px;
-   font-weight: bolder;
+   font-size: 70px;
+   
   }
   .city-name {
-   font-size: 50px;
+   font-size: 30px;
   }
   .btn.input {
    font-size: 15px
@@ -159,11 +165,11 @@
 
  @media (min-width: 992px) {
   .title {
-   font-size: 80px;
-   font-weight: bolder;
+   font-size: 100px;
+   
   }
   .city-name {
-   font-size: 80px;
+   font-size: 60px;
   }
   .btn.input {
    font-size: 20px
@@ -186,11 +192,11 @@
 
  @media (min-width: 1200px) {
   .title {
-   font-size: 90px;
-   font-weight: bolder;
+   font-size: 110px;
+   
   }
   .city-name {
-   font-size: 90px;
+   font-size: 70px;
   }
   .btn.input {
    font-size: 20px
