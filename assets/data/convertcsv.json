@@ -1,0 +1,1378 @@
+[
+ {
+   "city": "Reykjavik",
+   "country": "Iceland",
+   "latitude": 64,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Helsinki",
+   "country": "Finland",
+   "latitude": 60,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Bergen",
+   "country": "Norway",
+   "latitude": 60,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Oslo ",
+   "country": "Norway",
+   "latitude": 59,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Stockholm",
+   "country": "Sweden",
+   "latitude": 59,
+   "temperature": "cold",
+   "adventure": "recreational",
+   "cost": "high"
+ },
+ {
+   "city": "Tallinn",
+   "country": "Estonia",
+   "latitude": 59,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "med"
+ },
+ {
+   "city": "St Petersburg",
+   "country": "Russia",
+   "latitude": 59,
+   "temperature": "cold",
+   "adventure": "relaxed",
+   "cost": "low"
+ },
+ {
+   "city": "Riga ",
+   "country": "Latvia",
+   "latitude": 57,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "med"
+ },
+ {
+   "city": "Edinburgh",
+   "country": "Scotland",
+   "latitude": 55,
+   "temperature": "cold",
+   "adventure": "recreational",
+   "cost": "med"
+ },
+ {
+   "city": "Copenhagen",
+   "country": "Denmark",
+   "latitude": 55,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Moscow",
+   "country": "Russia",
+   "latitude": 55,
+   "temperature": "cold",
+   "adventure": "relaxed",
+   "cost": "low"
+ },
+ {
+   "city": "Vilnius",
+   "country": "Lithuania",
+   "latitude": 55,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "med"
+ },
+ {
+   "city": "Galway",
+   "country": "Ireland",
+   "latitude": 53,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Dublin",
+   "country": "Ireland",
+   "latitude": 53,
+   "temperature": "cold",
+   "adventure": "recreational",
+   "cost": "high"
+ },
+ {
+   "city": "Hamburg",
+   "country": "Germany",
+   "latitude": 53,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Amsterdam",
+   "country": "Netherlands",
+   "latitude": 52,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Berlin",
+   "country": "Germany",
+   "latitude": 52,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Warsaw",
+   "country": "Poland",
+   "latitude": 52,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "med"
+ },
+ {
+   "city": "London",
+   "country": "England",
+   "latitude": 51,
+   "temperature": "cold",
+   "adventure": "recreational",
+   "cost": "med"
+ },
+ {
+   "city": "Bruges",
+   "country": "Belguim",
+   "latitude": 51,
+   "temperature": "mild",
+   "adventure": "recreational",
+   "cost": "med"
+ },
+ {
+   "city": "Brussells",
+   "country": "Belguim",
+   "latitude": 50,
+   "temperature": "mild",
+   "adventure": "recreational",
+   "cost": "med"
+ },
+ {
+   "city": "Prague",
+   "country": "Czech Republic",
+   "latitude": 50,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "med"
+ },
+ {
+   "city": "Krakow",
+   "country": "Poland",
+   "latitude": 50,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "med"
+ },
+ {
+   "city": "Vancouver",
+   "country": "Canada",
+   "latitude": 49,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Luxembourg city",
+   "country": "Luxembourg",
+   "latitude": 49,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Cesky Krumlov",
+   "country": "Czech Republic",
+   "latitude": 49,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "med"
+ },
+ {
+   "city": "Paris",
+   "country": "France",
+   "latitude": 48,
+   "temperature": "cold",
+   "adventure": "recreational",
+   "cost": "high"
+ },
+ {
+   "city": "Munich",
+   "country": "Germany",
+   "latitude": 48,
+   "temperature": "cold",
+   "adventure": "recreational",
+   "cost": "high"
+ },
+ {
+   "city": "Vienna",
+   "country": "Austria",
+   "latitude": 48,
+   "temperature": "cold",
+   "adventure": "recreational",
+   "cost": "high"
+ },
+ {
+   "city": "Salzburg",
+   "country": "Austria",
+   "latitude": 48,
+   "temperature": "cold",
+   "adventure": "recreational",
+   "cost": "high"
+ },
+ {
+   "city": "Bratislava",
+   "country": "Slovakia",
+   "latitude": 48,
+   "temperature": "cold",
+   "adventure": "relaxed",
+   "cost": "med"
+ },
+ {
+   "city": "Zurich",
+   "country": "Switzerland",
+   "latitude": 47,
+   "temperature": "cold",
+   "adventure": "recreational",
+   "cost": "high"
+ },
+ {
+   "city": "Budapest",
+   "country": "Hungary ",
+   "latitude": 47,
+   "temperature": "mild",
+   "adventure": "relaxed",
+   "cost": "low"
+ },
+ {
+   "city": "Interlaken",
+   "country": "Switzerland",
+   "latitude": 47,
+   "temperature": "cold",
+   "adventure": "relaxed",
+   "cost": "high"
+ },
+ {
+   "city": "Lucerne",
+   "country": "Switzerland",
+   "latitude": 47,
+   "temperature": "cold",
+   "adventure": "recreational",
+   "cost": "high"
+ },
+ {
+   "city": "Ljubjana",
+   "country": "Slovenia",
+   "latitude": 46,
+   "temperature": "cold",
+   "adventure": "recreational",
+   "cost": "med"
+ },
+ {
+   "city": "Montreal",
+   "country": "Canada",
+   "latitude": 45,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Milan",
+   "country": "Italy",
+   "latitude": 45,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Venice",
+   "country": "Italy",
+   "latitude": 45,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Belgrade",
+   "country": "Serbia",
+   "latitude": 45,
+   "temperature": "cold",
+   "adventure": "relaxed",
+   "cost": "low"
+ },
+ {
+   "city": "Zagreb",
+   "country": "Croatia",
+   "latitude": 45,
+   "temperature": "cold",
+   "adventure": "recreational",
+   "cost": "med"
+ },
+ {
+   "city": "Queenstown",
+   "country": "New Zealand",
+   "latitude": 45,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Bucharest",
+   "country": "Romania",
+   "latitude": 44,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "low"
+ },
+ {
+   "city": "Sarajevo",
+   "country": "Bosnia",
+   "latitude": 44,
+   "temperature": "mild",
+   "adventure": "recreational",
+   "cost": "low"
+ },
+ {
+   "city": "Monaco",
+   "country": "Monaco",
+   "latitude": 44,
+   "temperature": "hot",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Christchurch",
+   "country": "New Zealand",
+   "latitude": 44,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Toronto",
+   "country": "Canada",
+   "latitude": 43,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Nice",
+   "country": "France",
+   "latitude": 43,
+   "temperature": "hot",
+   "adventure": "relaxed",
+   "cost": "high"
+ },
+ {
+   "city": "Florence",
+   "country": "Italy",
+   "latitude": 43,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Split",
+   "country": "Croatia",
+   "latitude": 43,
+   "temperature": "cold",
+   "adventure": "recreational",
+   "cost": "med"
+ },
+ {
+   "city": "Dubrovnik",
+   "country": "Croatia",
+   "latitude": 42,
+   "temperature": "cold",
+   "adventure": "recreational",
+   "cost": "med"
+ },
+ {
+   "city": "Sofia",
+   "country": "Bulgaria",
+   "latitude": 42,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "low"
+ },
+ {
+   "city": "Boston",
+   "country": "USA",
+   "latitude": 42,
+   "temperature": "mild",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Chicago",
+   "country": "USA",
+   "latitude": 41,
+   "temperature": "mild",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Barcelona",
+   "country": "Spain",
+   "latitude": 41,
+   "temperature": "hot",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Rome",
+   "country": "Itlay",
+   "latitude": 41,
+   "temperature": "mild",
+   "adventure": "relaxed",
+   "cost": "high"
+ },
+ {
+   "city": "Istanbul",
+   "country": "Turkey",
+   "latitude": 41,
+   "temperature": "cold",
+   "adventure": "recreational",
+   "cost": "low"
+ },
+ {
+   "city": "Bariloche",
+   "country": "Argentina",
+   "latitude": 41,
+   "temperature": "cold",
+   "adventure": "relaxed",
+   "cost": "med"
+ },
+ {
+   "city": "New York city",
+   "country": "USA",
+   "latitude": 40,
+   "temperature": "mild",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Madrid",
+   "country": "Spain",
+   "latitude": 40,
+   "temperature": "hot",
+   "adventure": "recreational",
+   "cost": "high"
+ },
+ {
+   "city": "Naples",
+   "country": "Italy",
+   "latitude": 40,
+   "temperature": "hot",
+   "adventure": "recreational",
+   "cost": "high"
+ },
+ {
+   "city": "Sorrento",
+   "country": "Italy",
+   "latitude": 40,
+   "temperature": "hot",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Beijing",
+   "country": "China",
+   "latitude": 39,
+   "temperature": "cold",
+   "adventure": "relaxed",
+   "cost": "med"
+ },
+ {
+   "city": "Ibiza",
+   "country": "Spain",
+   "latitude": 39,
+   "temperature": "hot",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Valencia",
+   "country": "Spain",
+   "latitude": 39,
+   "temperature": "hot",
+   "adventure": "recreational",
+   "cost": "high"
+ },
+ {
+   "city": "Washington DC",
+   "country": "USA",
+   "latitude": 38,
+   "temperature": "mild",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Lisbon",
+   "country": "Portugal",
+   "latitude": 38,
+   "temperature": "mild",
+   "adventure": "active",
+   "cost": "med"
+ },
+ {
+   "city": "Mar del Plata",
+   "country": "Argentina",
+   "latitude": 38,
+   "temperature": "cold",
+   "adventure": "relaxed",
+   "cost": "med"
+ },
+ {
+   "city": "Rotorua",
+   "country": "New Zealand",
+   "latitude": 38,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "San Francisco",
+   "country": "USA",
+   "latitude": 37,
+   "temperature": "mild",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Athens",
+   "country": "Greece",
+   "latitude": 37,
+   "temperature": "hot",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Seoul",
+   "country": "South Korea",
+   "latitude": 37,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Granada",
+   "country": "Spain",
+   "latitude": 37,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Malaga",
+   "country": "Spain",
+   "latitude": 37,
+   "temperature": "hot",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Seville",
+   "country": "Spain",
+   "latitude": 37,
+   "temperature": "hot",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Mykonos",
+   "country": "Greece",
+   "latitude": 37,
+   "temperature": "hot",
+   "adventure": "active",
+   "cost": "med"
+ },
+ {
+   "city": "Faro",
+   "country": "Portugal",
+   "latitude": 37,
+   "temperature": "mild",
+   "adventure": "active",
+   "cost": "med"
+ },
+ {
+   "city": "Antalya",
+   "country": "Turkey",
+   "latitude": 37,
+   "temperature": "cold",
+   "adventure": "recreational",
+   "cost": "low"
+ },
+ {
+   "city": "Melbourne",
+   "country": "Australia",
+   "latitude": 37,
+   "temperature": "hot",
+   "adventure": "active",
+   "cost": "med"
+ },
+ {
+   "city": "Las Vegas",
+   "country": "USA",
+   "latitude": 36,
+   "temperature": "hot",
+   "adventure": "active",
+   "cost": "med"
+ },
+ {
+   "city": "Rhodes",
+   "country": "Greece",
+   "latitude": 36,
+   "temperature": "hot",
+   "adventure": "active",
+   "cost": "med"
+ },
+ {
+   "city": "Santorini",
+   "country": "Greece",
+   "latitude": 36,
+   "temperature": "hot",
+   "adventure": "active",
+   "cost": "med"
+ },
+ {
+   "city": "Valletta",
+   "country": "Malta",
+   "latitude": 36,
+   "temperature": "hot",
+   "adventure": "active",
+   "cost": "med"
+ },
+ {
+   "city": "Kas",
+   "country": "Turkey",
+   "latitude": 36,
+   "temperature": "cold",
+   "adventure": "recreational",
+   "cost": "low"
+ },
+ {
+   "city": "Auckland",
+   "country": "New Zealand",
+   "latitude": 36,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Tokyo",
+   "country": "Japan",
+   "latitude": 35,
+   "temperature": "mild",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Kyoto",
+   "country": "Japan",
+   "latitude": 35,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Osaka",
+   "country": "Japan",
+   "latitude": 35,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Los Angeles",
+   "country": "USA",
+   "latitude": 34,
+   "temperature": "hot",
+   "adventure": "active",
+   "cost": "med"
+ },
+ {
+   "city": "Fez",
+   "country": "Morroco",
+   "latitude": 34,
+   "temperature": "hot",
+   "adventure": "relaxed",
+   "cost": "low"
+ },
+ {
+   "city": "Xian",
+   "country": "China",
+   "latitude": 34,
+   "temperature": "cold",
+   "adventure": "relaxed",
+   "cost": "med"
+ },
+ {
+   "city": "Buenos Aires",
+   "country": "Argentina",
+   "latitude": 34,
+   "temperature": "cold",
+   "adventure": "relaxed",
+   "cost": "med"
+ },
+ {
+   "city": "Montevideo",
+   "country": "Uruguay",
+   "latitude": 34,
+   "temperature": "hot",
+   "adventure": "active",
+   "cost": "med"
+ },
+ {
+   "city": "Sydney",
+   "country": "Australia",
+   "latitude": 34,
+   "temperature": "hot",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Punta del Este",
+   "country": "Uruguay",
+   "latitude": 34,
+   "temperature": "hot",
+   "adventure": "active",
+   "cost": "low"
+ },
+ {
+   "city": "Beirut",
+   "country": "Lebanon",
+   "latitude": 33,
+   "temperature": "mild",
+   "adventure": "recreational",
+   "cost": "high"
+ },
+ {
+   "city": "Santiago",
+   "country": "Chile",
+   "latitude": 33,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "med"
+ },
+ {
+   "city": "Cape Town",
+   "country": "South Africa",
+   "latitude": 33,
+   "temperature": "mild",
+   "adventure": "recreational",
+   "cost": "med"
+ },
+ {
+   "city": "Mendoza",
+   "country": "Argentina",
+   "latitude": 33,
+   "temperature": "cold",
+   "adventure": "relaxed",
+   "cost": "med"
+ },
+ {
+   "city": "Santiago",
+   "country": "Chile",
+   "latitude": 33,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "med"
+ },
+ {
+   "city": "Valparaiso",
+   "country": "Chile",
+   "latitude": 33,
+   "temperature": "cold",
+   "adventure": "active",
+   "cost": "med"
+ },
+ {
+   "city": "Tel Aviv",
+   "country": "Israel",
+   "latitude": 32,
+   "temperature": "hot",
+   "adventure": "active",
+   "cost": "low"
+ },
+ {
+   "city": "Marrakech",
+   "country": "Morroco",
+   "latitude": 31,
+   "temperature": "hot",
+   "adventure": "recreational",
+   "cost": "low"
+ },
+ {
+   "city": "Amman",
+   "country": "Jordan",
+   "latitude": 31,
+   "temperature": "mild",
+   "adventure": "active",
+   "cost": "med"
+ },
+ {
+   "city": "Shanghai",
+   "country": "China",
+   "latitude": 31,
+   "temperature": "cold",
+   "adventure": "relaxed",
+   "cost": "med"
+ },
+ {
+   "city": "Perth ",
+   "country": "Australia",
+   "latitude": 31,
+   "temperature": "hot",
+   "adventure": "active",
+   "cost": "low"
+ },
+ {
+   "city": "Cairo",
+   "country": "Egypt",
+   "latitude": 30,
+   "temperature": "mild",
+   "adventure": "recreational",
+   "cost": "low"
+ },
+ {
+   "city": "New Orleans",
+   "country": "USA",
+   "latitude": 29,
+   "temperature": "hot",
+   "adventure": "active",
+   "cost": "low"
+ },
+ {
+   "city": "Delhi",
+   "country": "India",
+   "latitude": 28,
+   "temperature": "mild",
+   "adventure": "relaxed",
+   "cost": "low"
+ },
+ {
+   "city": "Sharm el-Sheikh",
+   "country": "Egypt",
+   "latitude": 28,
+   "temperature": "mild",
+   "adventure": "recreational",
+   "cost": "low"
+ },
+ {
+   "city": "Tenerife",
+   "country": "Spain",
+   "latitude": 28,
+   "temperature": "hot",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Kathmandu",
+   "country": "Nepal",
+   "latitude": 27,
+   "temperature": "cold",
+   "adventure": "relaxed",
+   "cost": "low"
+ },
+ {
+   "city": "Brisbane",
+   "country": "Australia",
+   "latitude": 27,
+   "temperature": "hot",
+   "adventure": "active",
+   "cost": "low"
+ },
+ {
+   "city": "Miami",
+   "country": "USA",
+   "latitude": 25,
+   "temperature": "hot",
+   "adventure": "active",
+   "cost": "low"
+ },
+ {
+   "city": "Dubai",
+   "country": "UAE",
+   "latitude": 25,
+   "temperature": "hot",
+   "adventure": "relaxed",
+   "cost": "high"
+ },
+ {
+   "city": "Taipei",
+   "country": "Taiwan",
+   "latitude": 25,
+   "temperature": "hot",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Abu Dhabi",
+   "country": "UAE",
+   "latitude": 24,
+   "temperature": "hot",
+   "adventure": "relaxed",
+   "cost": "high"
+ },
+ {
+   "city": "Los Cabos",
+   "country": "Mexico",
+   "latitude": 23,
+   "temperature": "mild",
+   "adventure": "relaxed",
+   "cost": "low"
+ },
+ {
+   "city": "Rio de Janeiro",
+   "country": "Brazil",
+   "latitude": 23,
+   "temperature": "hot",
+   "adventure": "relaxed",
+   "cost": "med"
+ },
+ {
+   "city": "Sao Paulo",
+   "country": "Brazil",
+   "latitude": 23,
+   "temperature": "hot",
+   "adventure": "relaxed",
+   "cost": "med"
+ },
+ {
+   "city": "Macau",
+   "country": "Macau",
+   "latitude": 22,
+   "temperature": "hot",
+   "adventure": "recreational",
+   "cost": "low"
+ },
+ {
+   "city": "Hong Kong",
+   "country": "Hong Kong",
+   "latitude": 22,
+   "temperature": "mild",
+   "adventure": "relaxed",
+   "cost": "high"
+ },
+ {
+   "city": "Sapa",
+   "country": "Vietnam",
+   "latitude": 22,
+   "temperature": "mild",
+   "adventure": "relaxed",
+   "cost": "low"
+ },
+ {
+   "city": "Honolulu",
+   "country": "USA",
+   "latitude": 21,
+   "temperature": "hot",
+   "adventure": "active",
+   "cost": "low"
+ },
+ {
+   "city": "Cancun",
+   "country": "Mexico",
+   "latitude": 21,
+   "temperature": "mild",
+   "adventure": "relaxed",
+   "cost": "low"
+ },
+ {
+   "city": "Hanoi",
+   "country": "Vietnam",
+   "latitude": 21,
+   "temperature": "mild",
+   "adventure": "active",
+   "cost": "low"
+ },
+ {
+   "city": "Cozumel",
+   "country": "Mexico",
+   "latitude": 21,
+   "temperature": "mild",
+   "adventure": "relaxed",
+   "cost": "low"
+ },
+ {
+   "city": "Puerto Vallarta",
+   "country": "Mexico",
+   "latitude": 21,
+   "temperature": "mild",
+   "adventure": "relaxed",
+   "cost": "low"
+ },
+ {
+   "city": "Mexico city",
+   "country": "Mexico",
+   "latitude": 19,
+   "temperature": "mild",
+   "adventure": "relaxed",
+   "cost": "low"
+ },
+ {
+   "city": "Luang Prabang",
+   "country": "Laos",
+   "latitude": 19,
+   "temperature": "mild",
+   "adventure": "recreational",
+   "cost": "low"
+ },
+ {
+   "city": "Punta Cana",
+   "country": "Dominican Republic",
+   "latitude": 19,
+   "temperature": "mild",
+   "adventure": "active",
+   "cost": "med"
+ },
+ {
+   "city": "Mumbai",
+   "country": "India",
+   "latitude": 18,
+   "temperature": "mild",
+   "adventure": "relaxed",
+   "cost": "low"
+ },
+ {
+   "city": "Chiang Mai",
+   "country": "Thailand",
+   "latitude": 18,
+   "temperature": "hot",
+   "adventure": "recreational",
+   "cost": "med"
+ },
+ {
+   "city": "San Juan",
+   "country": "Puerto Rico",
+   "latitude": 18,
+   "temperature": "hot",
+   "adventure": "recreational",
+   "cost": "high"
+ },
+ {
+   "city": "Montego Bay",
+   "country": "Jamacia",
+   "latitude": 18,
+   "temperature": "hot",
+   "adventure": "relaxed",
+   "cost": "med"
+ },
+ {
+   "city": "Antigua",
+   "country": "Guatemala",
+   "latitude": 17,
+   "temperature": "mild",
+   "adventure": "recreational",
+   "cost": "med"
+ },
+ {
+   "city": "San Pedro",
+   "country": "Belize",
+   "latitude": 17,
+   "temperature": "hot",
+   "adventure": "recreational",
+   "cost": "low"
+ },
+ {
+   "city": "Vientiane",
+   "country": "Laos",
+   "latitude": 17,
+   "temperature": "mild",
+   "adventure": "recreational",
+   "cost": "low"
+ },
+ {
+   "city": "Yangon",
+   "country": "Myanmar",
+   "latitude": 17,
+   "temperature": "cold",
+   "adventure": "relaxed",
+   "cost": "low"
+ },
+ {
+   "city": "Hue",
+   "country": "Vietnam",
+   "latitude": 17,
+   "temperature": "mild",
+   "adventure": "recreational",
+   "cost": "low"
+ },
+ {
+   "city": "La Paz",
+   "country": "Bolivia",
+   "latitude": 16,
+   "temperature": "mild",
+   "adventure": "relaxed",
+   "cost": "low"
+ },
+ {
+   "city": "Cairns",
+   "country": "Australia",
+   "latitude": 16,
+   "temperature": "hot",
+   "adventure": "active",
+   "cost": "low"
+ },
+ {
+   "city": "Goa",
+   "country": "India",
+   "latitude": 15,
+   "temperature": "mild",
+   "adventure": "relaxed",
+   "cost": "low"
+ },
+ {
+   "city": "Hoi An",
+   "country": "Vietnam",
+   "latitude": 15,
+   "temperature": "mild",
+   "adventure": "recreational",
+   "cost": "low"
+ },
+ {
+   "city": "Dakar",
+   "country": "Senegal",
+   "latitude": 14,
+   "temperature": "hot",
+   "adventure": "recreational",
+   "cost": "low"
+ },
+ {
+   "city": "Manila",
+   "country": "Philippines",
+   "latitude": 14,
+   "temperature": "hot",
+   "adventure": "recreational",
+   "cost": "low"
+ },
+ {
+   "city": "Bangkok",
+   "country": "Thailand",
+   "latitude": 13,
+   "temperature": "hot",
+   "adventure": "recreational",
+   "cost": "med"
+ },
+ {
+   "city": "Siem Reap",
+   "country": "Cambodia",
+   "latitude": 13,
+   "temperature": "hot",
+   "adventure": "relaxed",
+   "cost": "med"
+ },
+ {
+   "city": "Pattaya",
+   "country": "Thailand",
+   "latitude": 13,
+   "temperature": "hot",
+   "adventure": "recreational",
+   "cost": "med"
+ },
+ {
+   "city": "Nha Trang",
+   "country": "Vietnam",
+   "latitude": 13,
+   "temperature": "mild",
+   "adventure": "recreational",
+   "cost": "low"
+ },
+ {
+   "city": "Cusco",
+   "country": "Peru",
+   "latitude": 13,
+   "temperature": "mild",
+   "adventure": "recreational",
+   "cost": "low"
+ },
+ {
+   "city": "Boracay Island",
+   "country": "Philippines",
+   "latitude": 12,
+   "temperature": "hot",
+   "adventure": "recreational",
+   "cost": "low"
+ },
+ {
+   "city": "Lima",
+   "country": "Peru",
+   "latitude": 12,
+   "temperature": "mild",
+   "adventure": "recreational",
+   "cost": "low"
+ },
+ {
+   "city": "Phnom Penh",
+   "country": "Cambodia",
+   "latitude": 11,
+   "temperature": "hot",
+   "adventure": "relaxed",
+   "cost": "med"
+ },
+ {
+   "city": "Cartagena",
+   "country": "Columbia",
+   "latitude": 10,
+   "temperature": "hot",
+   "adventure": "recreational",
+   "cost": "low"
+ },
+ {
+   "city": "Caracas",
+   "country": "Venezuela",
+   "latitude": 10,
+   "temperature": "hot",
+   "adventure": "relaxed",
+   "cost": "low"
+ },
+ {
+   "city": "Ho Chi Minh city",
+   "country": "Vietnam",
+   "latitude": 10,
+   "temperature": "mild",
+   "adventure": "recreational",
+   "cost": "low"
+ },
+ {
+   "city": "San Jose",
+   "country": "costa Rica",
+   "latitude": 9,
+   "temperature": "mild",
+   "adventure": "active",
+   "cost": "med"
+ },
+ {
+   "city": "Panama city",
+   "country": "Panama",
+   "latitude": 8,
+   "temperature": "hot",
+   "adventure": "recreational",
+   "cost": "med"
+ },
+ {
+   "city": "Kuta",
+   "country": "Indonesia",
+   "latitude": 8,
+   "temperature": "hot",
+   "adventure": "relaxed",
+   "cost": "low"
+ },
+ {
+   "city": "Recife",
+   "country": "Brazil",
+   "latitude": 8,
+   "temperature": "hot",
+   "adventure": "relaxed",
+   "cost": "med"
+ },
+ {
+   "city": "Phuket Town",
+   "country": "Thailand",
+   "latitude": 7,
+   "temperature": "hot",
+   "adventure": "recreational",
+   "cost": "med"
+ },
+ {
+   "city": "Zanzibar city",
+   "country": "Tanzania",
+   "latitude": 7,
+   "temperature": "mild",
+   "adventure": "relaxed",
+   "cost": "med"
+ },
+ {
+   "city": "Colombo",
+   "country": "Sri Lanka",
+   "latitude": 7,
+   "temperature": "hot",
+   "adventure": "relaxed",
+   "cost": "low"
+ },
+ {
+   "city": "Jakarta",
+   "country": "Indonesia",
+   "latitude": 7,
+   "temperature": "hot",
+   "adventure": "relaxed",
+   "cost": "low"
+ },
+ {
+   "city": "Dar es Salaam",
+   "country": "Tanzania",
+   "latitude": 6,
+   "temperature": "mild",
+   "adventure": "relaxed",
+   "cost": "med"
+ },
+ {
+   "city": "Medellin",
+   "country": "Colombia",
+   "latitude": 6,
+   "temperature": "mild",
+   "adventure": "recreational",
+   "cost": "low"
+ },
+ {
+   "city": "Kuala Lumpur",
+   "country": "Malaysia",
+   "latitude": 3,
+   "temperature": "hot",
+   "adventure": "relaxed",
+   "cost": "med"
+ },
+ {
+   "city": "Arusha",
+   "country": "Tanzania",
+   "latitude": 3,
+   "temperature": "mild",
+   "adventure": "relaxed",
+   "cost": "med"
+ },
+ {
+   "city": "Singapore",
+   "country": "Singapore",
+   "latitude": 1,
+   "temperature": "hot",
+   "adventure": "active",
+   "cost": "high"
+ },
+ {
+   "city": "Nairobi",
+   "country": "Kenya",
+   "latitude": 1,
+   "temperature": "mild",
+   "adventure": "recreational",
+   "cost": "low"
+ },
+ {
+   "city": "Quito",
+   "country": "Ecuador",
+   "latitude": 0,
+   "temperature": "mild",
+   "adventure": "relaxed",
+   "cost": "med"
+ }
+]
