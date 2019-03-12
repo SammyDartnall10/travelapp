@@ -21,19 +21,19 @@
     <section>
 
         <div class="container splash-page">
-            <div class="row justify-content-md-center">
+            <div class="row justify-content-center">
                 <h1 class="title">Vojaĝado</h1>
             </div>
-            <div class="row justify-content-md-center">
-            <div class="col-6 bodycopy">
-                <p>Don't know where to head on your next holiday? Answer three simple questions and let us inspire you!</p>
-            </div>
+            <div class="row justify-content-center">
+                <div class="col-6 bodycopy">
+                    <p>Don't know where to head on your next holiday? Answer three simple questions and let us inspire you!</p>
+                </div>
             </div>
         </div>
 
 
         <div class="container">
-            <div class="row justify-content-md-center splash-bottom">
+            <div class="row justify-content-center splash-bottom">
                 <button type="button" class="btn btn-square btn-outline-dark lets-go" id="lets-go">Lets Go!</button>
             </div>
         </div>
@@ -43,13 +43,13 @@
     <section class="quiz" id="quiz">
 
         <div class="container">
-            <div class="row justify-content-md-center">
+            <div class="row justify-content-center">
                 <div>
                     <h2>How adventurous do you like your holidays?</h2>
                 </div>
             </div>
 
-            <div class="row justify-content-end">
+            <div class="row justify-content-center">
                 <div class="col">
                     <div class="btn-group" role="group" aria-label="Basic example">
                         <button type="button" class="btn btn-square btn-outline-dark adventure input" id="active" aria-pressed="true">All the adventures!</button>
@@ -59,12 +59,12 @@
                 </div>
             </div>
 
-            <div class="row justify-content-md-center">
+            <div class="row justify-content-center">
                 <div>
                     <h2>How hot (or not?)</h2>
                 </div>
             </div>
-            <div class="row justify-content-around">
+            <div class="row justify-content-center">
                 <div class="col">
                     <div class="btn-group" role="group" aria-label="Basic example">
                         <button type="button" class="btn btn-square btn-outline-dark temperature input" id="hot" aria-pressed="true">Baking</button>
@@ -74,16 +74,16 @@
                 </div>
             </div>
 
-            <div class="row justify-content-md-center">
+            <div class="row justify-content-center">
                 <div>
                     <h2>Whats your budget?</h2>
                 </div>
             </div>
-            <div class="row justify-content-around">
+            <div class="row justify-content-center">
                 <div class="col">
                     <div class="btn-group" role="group" aria-label="Basic example">
                         <button type="button" class="btn btn-square btn-outline-dark price input" id="high" aria-pressed="true">We're going all out!</button>
-                        <button type="button" class="btn btn-square btn-outline-dark price input" id="medium" aria-pressed="true">Middle of the pack</button>
+                        <button type="button" class="btn btn-square btn-outline-dark price input" id="med" aria-pressed="true">Middle of the pack</button>
                         <button type="button" class="btn btn-square btn-outline-dark price input" id="low" aria-pressed="true">Cheap as chips</button>
                     </div>
                 </div>
@@ -91,8 +91,10 @@
         </div>
 
         <div class="container">
-            <div class="row justify-content-md-center splash-bottom">
-                <button type="button" class="btn btn-square btn-outline-dark inspire" id="inspire" aria-pressed="true">Inspire Me!</button>
+            <div class="row justify-content-center splash-bottom">
+                <div class="col-offset-3 col-4">
+                    <button type="button" class="btn btn-square btn-outline-dark inspire" id="inspire" aria-pressed="true">Inspire Me!</button>
+                </div>
             </div>
         </div>
 
@@ -102,7 +104,7 @@
 
     <section id="map-section" class="map-section">
         <div class="container-fluid">
-            <div class="row justify-content-md-center">
+            <div class="row justify-content-center">
                 <div class="col">
                     <span class="metadata-marker" style="display: none;" data-region_tag="html-body"></span>
                     <h1 class="city-name">"The places you'll go..."</h1>
@@ -110,7 +112,7 @@
             </div>
 
             <!--The div element for the map-->
-            <div class="row justify-content-md-center">
+            <div class="row justify-content-center">
                 <div class="col" id="map"></div>
 
             </div>
@@ -122,7 +124,7 @@
 
 
         <div class="container">
-            <div class="row justify-content-md-center reveal-buttons" id="reveal-buttons">
+            <div class="row justify-content-center reveal-buttons" id="reveal-buttons">
                 <div class="col">
                     <button type="button" class="btn btn-square btn-outline-dark switch" id="bars" aria-pressed="true">Places to drink</button>
                 </div>
@@ -140,18 +142,18 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="container">
-        <div class="row">
-            <div class = "col" id="bars-results">
+            <div class="row">
+                <div class="col" id="bars-results">
+                </div>
+                <div class="col" id="restaurants-results">
+                </div>
+                <div class="col" id="hotels-results">
+                </div>
+                <div class="col" id="pointOfInterest-results">
+                </div>
             </div>
-            <div class = "col" id="restaurants-results">
-            </div>
-            <div class = "col" id="hotels-results">
-            </div>
-            <div class = "col" id="pointOfInterest-results">
-            </div>
-        </div>
         </div>
     </section>
 
