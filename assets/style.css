@@ -33,9 +33,18 @@
  .city-name {
   font-family: 'Cormorant', serif;
  }
+ 
+ h1 {
+  text-align: center;
+ }
 
  h2 {
-  margin-top: 10vh
+  margin-top: 10vh;
+  font-size:18px;
+ }
+ 
+ .row {
+  text-align: center;
  }
 
  .quiz {
@@ -70,12 +79,14 @@
 
  .lets-go {
   height: 5vh;
+  font-size: 10px;
  }
 
  .inspire {
   height: 5vh;
   margin-top: 50px;
-  font-size: 15px
+  font-size: 10px;
+  margin-bottom: 20px;
  }
 
  .bodycopy {
@@ -84,6 +95,10 @@
   position: absolute;
   top: calc(50% - 1px);
  }
+
+#reveal-buttons{
+ visibility: hidden;
+}
 
 
  /*Small devices (landscape phones, 576px and up)*/
@@ -102,6 +117,15 @@
   .btn.switch {
    font-size: 10px
   }
+  .lets-go{
+   font-size: 10px;
+  }
+  .inspire{
+   font-size: 10px;
+  }
+  h2 {
+  font-size:12px;
+ }
  }
 
  /*Medium devices (tablets, 768px and up)*/
@@ -120,6 +144,15 @@
   .btn.switch {
    font-size: 15px
   }
+  .lets-go{
+   font-size: 17px;
+  }
+  .inspire{
+   font-size: 17px;
+  }
+  h2 {
+  font-size:20px;
+ }
  }
 
  /*Large devices (desktops, 992px and up)*/
@@ -138,6 +171,15 @@
   .btn.switch {
    font-size: 20px
   }
+  .lets-go{
+   font-size: 22px;
+  }
+  .inspire{
+   font-size: 22px;
+  }
+  h2 {
+  font-size:24px;
+ }
  }
 
  /*Extra large devices (large desktops, 1200px and up)*/
@@ -156,6 +198,15 @@
   .btn.switch {
    font-size: 20px
   }
+  .lets-go{
+   font-size: 22px;
+  }
+  .inspire{
+   font-size: 22px;
+  }
+  h2 {
+  font-size:24px;
+ }
  }
 
 
