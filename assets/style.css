@@ -33,16 +33,16 @@
  .city-name {
   font-family: 'Cormorant', serif;
  }
- 
+
  h1 {
   text-align: center;
  }
 
  h2 {
   margin-top: 10vh;
-  font-size:18px;
+  font-size: 18px;
  }
- 
+
  .row {
   text-align: center;
  }
@@ -60,10 +60,10 @@
   height: 10vh;
   font-size: 10px;
  }
- 
-.input:active { 
+
+ .input:active {
   background-color: yellow;
-}
+ }
 
  .btn.switch {
   font-size: 10px
@@ -90,21 +90,22 @@
  }
 
  .bodycopy {
-  font-size: 15px;
+  font-size: 10px;
   font-family: 'Montserrat', sans-serif;
   position: absolute;
   top: calc(50% - 1px);
+  margin-top: 40px;
  }
 
-#reveal-buttons{
- visibility: hidden;
- margin-top: 50px;
-}
+ #reveal-buttons {
+  visibility: hidden;
+  margin-top: 50px;
+ }
 
-#book{
- visibility: hidden;
- margin-top: 50px;
-}
+ #book {
+  visibility: hidden;
+  margin-top: 50px;
+ }
 
 
  /*Small devices (landscape phones, 576px and up)*/
@@ -123,15 +124,18 @@
   .btn.switch {
    font-size: 10px
   }
-  .lets-go{
+  .lets-go {
    font-size: 10px;
   }
-  .inspire{
+  .inspire {
    font-size: 10px;
   }
   h2 {
-  font-size:12px;
- }
+   font-size: 12px;
+  }
+  .bodycopy {
+   margin-top: 0px;
+  }
  }
 
  /*Medium devices (tablets, 768px and up)*/
@@ -139,7 +143,7 @@
  @media (min-width: 768px) {
   .title {
    font-size: 70px;
-   
+
   }
   .city-name {
    font-size: 30px;
@@ -150,15 +154,18 @@
   .btn.switch {
    font-size: 15px
   }
-  .lets-go{
+  .lets-go {
    font-size: 17px;
   }
-  .inspire{
+  .inspire {
    font-size: 17px;
   }
   h2 {
-  font-size:20px;
- }
+   font-size: 20px;
+  }
+  .bodycopy {
+   font-size: 15px;
+  }
  }
 
  /*Large devices (desktops, 992px and up)*/
@@ -166,7 +173,7 @@
  @media (min-width: 992px) {
   .title {
    font-size: 100px;
-   
+
   }
   .city-name {
    font-size: 60px;
@@ -177,15 +184,19 @@
   .btn.switch {
    font-size: 20px
   }
-  .lets-go{
+  .lets-go {
    font-size: 22px;
   }
-  .inspire{
+  .inspire {
    font-size: 22px;
   }
   h2 {
-  font-size:24px;
- }
+   font-size: 24px;
+  }
+  .bodycopy {
+   margin-top: 40px;
+   font-size: 20px
+  }
  }
 
  /*Extra large devices (large desktops, 1200px and up)*/
@@ -193,7 +204,7 @@
  @media (min-width: 1200px) {
   .title {
    font-size: 110px;
-   
+
   }
   .city-name {
    font-size: 70px;
@@ -204,15 +215,19 @@
   .btn.switch {
    font-size: 20px
   }
-  .lets-go{
+  .lets-go {
    font-size: 22px;
   }
-  .inspire{
+  .inspire {
    font-size: 22px;
   }
   h2 {
-  font-size:24px;
- }
+   font-size: 24px;
+  }
+  .bodycopy {
+   margin-top: 40px;
+   font-size: 20px;
+  }
  }
 
 
