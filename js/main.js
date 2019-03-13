@@ -121,7 +121,7 @@ function getTemperature(obj, key, val) {
 /*Third step of selection - filter objects by price -  to be passed back to #inspire onclick event*/
 
 function getCost(obj, key, val) {
-    costSelections = [];
+    var costSelections = [];
     for (var i in obj) {
         if (!obj.hasOwnProperty(i)) continue;
         if (typeof obj[i] == 'object') {
@@ -225,8 +225,6 @@ function codeAddress2(cities) {
 
 
 /*Places Search based on geocoding and type of search - for this - bars- when button clicked*/
-var infoWindowPlaces = [];
-var barName = [];
 var markers = [];
 
 
