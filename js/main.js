@@ -427,7 +427,7 @@ $("#hotels").on("click", function() {
 
             //infowindow.open(map, marker)
             var placePhotoUrl = place.photos[0].getUrl({ maxWidth: 100 });
-            
+
             infowindow.setContent('<div  ><strong><img src= "' + placePhotoUrl + '" > </div> <div>' + place.name + '</strong><br>' +
                 'Rating: ' + place.rating + '<br>' +
                 place.vicinity + '</div>');
