@@ -22,6 +22,11 @@
   border-width: 5px;
   background-color: white;
  }
+ 
+ .btn.btn-square:focus {
+  background-color: #343a40;
+  color:white;
+ }
 
  .title {
   font-family: 'Cormorant', serif;
@@ -59,10 +64,6 @@
   width: 25vw;
   height: 10vh;
   font-size: 10px;
- }
-
- .input:active {
-  background-color: yellow;
  }
 
  .btn.switch {
