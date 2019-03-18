@@ -30,20 +30,15 @@ therefore, on three objective data sets available on the web.
 After answering three simple questions, the site returns a range of city suggestions to the user, displayed on a Google maps. 
 The user can then select a destination and look at the bars, restaurants, places to stay and things to see in the area. 
 
-Wireframes.... mockups 
+The look and feel of the site should be consistent across mobile, ipad, and desktop version. To acheive this a grid system is employed: 
 
-Use this section to provide insight into your UX process, focusing on who this website is for, what it is that 
-they want to achieve and how your project is the best way to help them achieve these things.
+<img src="assets/readme/wireframesOne.jpeg">
 
-In particular, as part of this section we recommend that you provide a list of User Stories, with the following general structure:
+<img src="assets/readme/wireframesTwo.jpeg">
 
-As a user type, I want to perform an action, so that I can achieve a goal.
-
-This section is also where you would share links to any wireframes, mockups, diagrams etc. 
-that you created as part of the design process. These files should themselves either be included in the project itself 
-(in an separate directory), or just hosted elsewhere online and can be in any format that is viewable inside the browser. 
-
-
+The app was designed in a way so that the user can go back over their selections, and change them without having to refresh the whole page, or make
+initial selections eg "active, hot, cheap" in that linear order. As the variables are set out as objects at the start of the app, 
+selecting a differnt option updates the instance of that object, and doesnt require resetting. 
 
 <h2>Features</h2>
 The website has a number of deployed features, but also a few that may be implemented at a later date. 
@@ -64,18 +59,28 @@ This makes the site easy to maintian, update and grow. As new data is available 
 values can be collated in a program such as excel, and converted to JSON data. 
 In this way, values can be edited, and the database itself extended to add more destinations.
 
+The end options displayed at the bottom of the app also have the option to be 'booked' - the book button will take 
+the users current selection and pull the website on Google of that location, directing the user - in a new tab - the the website of the selected bar/restaurant etc. 
+
 <h3>Features Left to Implement</h3>
 
-A link to a site such as booking.com, tripadvisor etc could be implemented at the end of the site. 
-
 To make the cost feature more useful, could add in the users location at the start of the site, and add in
-distance from current location factor to calculate the cost of getting to that city. 
+distance from current location factor to calculate the cost of getting to that city.
+
+A more robust method of taking the top 10 cities - see "oever quota limit" error documented in 'testing' section below. 
+
+A itineray builder could form an intermediary step in between reviewing bars etc and clicking book. Users 
+could 'add' selections to a list, possibly just below the buttons. 
+The booking button could then be linked with tripadvisor/booking.com/kayak to take users to a one-stop booking site. 
+Alternatively they could book with the site direct, as many people still do prefer to book direct. 
+
+
 
 <h2>Technologies Used</h2>
 
-A combination of HTML5 has been used to provide the basic structre to the site.
+HTML5 has been used to provide the basic structre to the site.
 
-For site styling and stucture, the Bootstraplibrary has been employed across the site. 
+For site styling and stucture, the Bootstrap library has been employed across the site. 
 Bootstrap documentation can be found here: https://getbootstrap.com/docs/4.1/getting-started/introduction/
 
 In addition to bootstrap, custom styling has been added with CSS, and can be found in the assets/style.css file. 
@@ -85,7 +90,8 @@ reduce the amount of code needed in the main.js file.
 
 The Google places library is used to enable the Maps, Geocoder and Nearby Searches features of the site. 
 
-My own javascript sits alongside this, and pulls together the output and input required from one API to the other.
+My own javascript sits alongside this, and pulls together the output and input required from one API to the other, and interaction
+between the user and the DOM.
 
 <h2>Testing </h2>
 
@@ -98,15 +104,16 @@ CSS was validated using the CSS Validation Service provided by The World Wide We
 To make sure each combination of options returned city results, manual testing of each of the combinations was undertaken. 
 
 This highlighted two previously unnoticed errors -
-1. In some cases, the amount was too much for the Google API - resulting in the error "Quota limit exceeded"
-2. Combinations with the cost option medium did not return any results. It was not until looking closely at the raw data that the reason for this was shown - in the data the option is "medium", however in the javascript formula/code the option was spelt "med". 
+1. In some cases, the amount was too much for the Google API - resulting in the error "Quota limit exceeded".
+This wsa fixed by taking only the top 10 cities in the two instances of having more than 10 options from the combinations. 
+This is also more user freindly, as the user can see each of the markers. 
+2. Combinations with the cost option medium did not return any results. It was not until looking closely at the raw data that the reason for 
+this was shown - in the data the option is "medium", however in the javascript formula/code the option was spelt "med". 
 
 Results matrix was as follows: 
 <img src="assets/readme/options-results.png">
 
 After fixing the above issues, all options returned results. 
-
-Also Jasmine Testing? 
 
 UX was tested through having possible users try the site and 
 see if they could get to the end goal of a series of city, and corresponding bars/hotels etc options.
@@ -116,6 +123,7 @@ UI functionality was tested in all available browsers as follows:
 <img src="assets/readme/elements-check.png">
 <img src="assets/readme/layout-check.png">
 
+NB: Smooth scrolling is not supported on Safari
 
 <h2>Deployment</h2>
 GitHub has been used throughout this project to maintain version control as feature are added. After adding a new feature, the code is pushed to GitHub. 
@@ -138,10 +146,11 @@ As mentioned above, data is available from these sources:
 Background image from shutterstock and edited myself with photoshop. 
 
 <h2>Acknowledgements</h2>
-General credit and thanks to tutors and the student community of Code Institute, 
+Credit and thanks to tutors and the student community of Code Institute, 
 helping me to unpick probelms as they arose, and build understanding.
 
 Credit also specifically to my mentor, who not only helped me fix problems and explain 
 concepts, but also with: 
 *narrowing down the intial concept to an acheivable scope
 *explaining async functions, and how to manage output from them 
+*keeping me on track/motivated! 
