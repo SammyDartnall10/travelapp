@@ -30,6 +30,7 @@
 
  .title {
   font-family: 'Cormorant', serif;
+  font-weight: bolder;
   top: calc(50% - 100px);
   /* 100px is half the height..*/
   position: absolute;
@@ -37,6 +38,7 @@
 
  .city-name {
   font-family: 'Cormorant', serif;
+  font-weight: bolder;
  }
 
  h1 {
